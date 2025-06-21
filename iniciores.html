@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive en móviles -->
+    <title>Iniciar Sesión</title> <!-- Título de la pestaña -->
+    <link rel="icon" href="imagenes/logo.2.jpeg" type="image/png">
+
+    <style>
+        /* --- Estilo general del cuerpo de la página --- */
+        body {
+            margin: 0; /* Elimina márgenes predeterminados */
+            padding: 0; /* Elimina rellenos predeterminados */
+            font-family: Arial, sans-serif; /* Fuente limpia y legible */
+            background-image: url("imagenes/fondo.jpg");
+        }
+    
+    /* Navegación (barra superior) */
+.nav {
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.5);
+  text-align: left;
+}
+.nav .inicio {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            padding: 11px 30px;
+            border-radius: 30px;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            background: linear-gradient(90deg, #a4508b 0%, #f6d365 100%);
+            box-shadow: 0 2px 8px rgba(164, 80, 139, 0.21);
+            border: 2px solid #fff3;
+        }
+        .nav .inicio:hover {
+            background: linear-gradient(90deg, #f6d365 0%, #a4508b 100%);
+            color: #232137;
+            box-shadow: 0 0 12px #a4508b77;
+        }
+        /* --- Estilo al pasar el mouse sobre los enlaces --- */
+        .navbar a:hover {
+            background-color: #575757; /* Fondo más claro al hacer hover */
+            color: white; /* Asegura que el texto siga siendo legible */
+        }
+
+    
+        /* --- Contenedor principal que centra el formulario --- */
+        .signin {
+            display: flex; /* Usa Flexbox para centrar contenido */
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            height: calc(100vh - 60px); /* Altura completa menos barra de navegación */
+        }
+    
+        /* --- Caja blanca que contiene el formulario --- */
+        .content {
+            background-color: white; /* Fondo blanco para contraste */
+            padding: 30px; /* Espaciado interno */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor */
+            width: 350px; /* Ancho fijo del formulario */
+        }
+    
+        /* --- Título del formulario --- */
+        h2 {
+            text-align: center; /* Centrado horizontal */
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+    
+        /* --- Contenedor para cada campo de entrada --- */
+        .input-box {
+            margin-bottom: 15px; /* Espacio entre campos */
+        }
+    
+        /* --- Estilo de los campos de texto y contraseña --- */
+        .input-box input {
+            width: 100%; /* Que ocupe todo el ancho disponible */
+            padding: 10px; /* Espaciado interno del campo */
+            border: 1px solid #ccc; /* Borde gris claro */
+            border-radius: 4px; /* Bordes ligeramente redondeados */
+        }
+    
+        /* --- Contenedor para los enlaces adicionales --- */
+        .links {
+            display: flex; /* Flexbox para colocar enlaces lado a lado */
+            justify-content: space-between; /* Separación entre ellos */
+            margin-bottom: 15px; /* Espacio debajo de los enlaces */
+            font-size: 14px; /* Tamaño de letra más pequeño */
+        }
+    
+        /* --- Estilo para los enlaces "olvidaste" y "regístrate" --- */
+        .links a {
+            text-decoration: none; /* Quitar subrayado */
+            color: #007BFF; /* Azul estándar para enlaces */
+        }
+    
+        /* --- Efecto hover sobre los enlaces de abajo --- */
+        .links a:hover {
+            text-decoration: underline; /* Subraya al pasar el mouse */
+        }
+    
+        /* --- Estilo del botón "Iniciar Sesión" --- */
+        .input-box input[type="submit"] {
+            background-color: #007BFF; /* Azul fuerte para destacar */
+            color: white; /* Texto blanco */
+            border: none; /* Quitar borde predeterminado */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            transition: background-color 0.3s; /* Transición suave al cambiar color */
+        }
+    
+        /* --- Cambiar color del botón cuando se hace hover --- */
+        .input-box input[type="submit"]:hover {
+            background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+        }
+    </style>
+    
+<!-- Barra de navegación -->
+<nav class="nav">
+    <a href="cecy.html" class="inicio">Inicio</a>
+    <!-- Botón para cambiar entre claro y oscuro -->
+  </nav>
+
+    <!-- Script de validación y recuperación de contraseña -->
+    <script>
+        // Función para validar el formulario antes de enviarlo
+        function validarInicioSesion() {
+            var nombreUsuario = document.getElementById("nombre_usuario_login").value;
+            var contraseña = document.getElementById("contraseña_login").value;
+
+            if (nombreUsuario.trim() === "" || contraseña.trim() === "") {
+                alert("Por favor, complete todos los campos.");
+                return false; // Evita que el formulario se envíe
+            }
+
+            return true; // Permitir el envío del formulario
+        }
+
+        // Función que muestra un mensaje si el usuario olvidó su contraseña
+        function forgotPassword() {
+            alert('Comunícate al número 5565265629 para recuperar tu contraseña.');
+        }
+    </script>
+</head>
+<body>
+
+
+    
+
+    <!-- Contenedor principal del formulario -->
+    <div class="signin">
+        <div class="content">
+            <h2>Inicia Sesión</h2>
+
+            <div class="form">
+                <!-- Formulario que se envía a un archivo PHP -->
+                <form action="php/inicio_sesion.php" method="POST" onsubmit="return validarInicioSesion()">
+                    <!-- Campo para el nombre de usuario -->
+                    <div class="input-box">
+                        <input type="text" id="nombre_usuario_login" name="nombre_usuario" placeholder="Usuario" required>
+                    </div>
+
+                    <!-- Campo para la contraseña -->
+                    <div class="input-box">
+                        <input type="password" id="contraseña_login" name="contraseña" placeholder="Contraseña" required>
+                    </div>
+
+                    <!-- Enlaces adicionales -->
+                    <div class="links">
+                        <a href="#" onclick="forgotPassword()">¿Olvidaste la Contraseña?</a>
+                        <a href="registro (1).html">Regístrate</a>
+                    </div>
+
+                    <!-- Botón de envío -->
+                    <div class="input-box">
+                        <input type="submit" value="Iniciar Sesión">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

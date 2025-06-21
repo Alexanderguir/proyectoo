@@ -1,0 +1,40 @@
+
+/* Aplica estilos generales a todo el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;   /* Define el tipo de letra (fuente) que se usará en la página */
+    margin: 20px;                     /* Deja un espacio de 20px alrededor del contenido del body */
+    background-image: url("imagenes/fondo.jpg");       /* definimos el fondo de la interfaz */
+}
+
+/* Estilos para el menú de navegación */
+.menu {
+    text-align: center;               /* Centra el contenido horizontalmente (los enlaces del menú) */
+    margin-bottom: 20px;             /* Agrega un espacio debajo del menú para separarlo del contenido siguiente */
+}
+
+/* Estilos para los enlaces dentro del menú */
+.menu a {
+    text-decoration: none;           /* Elimina el subrayado predeterminado de los enlaces */
+    color: #206f58;                  /* Cambia el color del texto del enlace */
+    margin: 0 10px;                  /* Deja un espacio de 10px a los lados de cada enlace */
+    font-weight: bold;               /* Hace que el texto de los enlaces aparezca en negritas */
+}
+
+/* Estilos generales para los encabezados h2 y h3 */
+h2, h3 {
+    text-align: center;              /* Centra los encabezados horizontalmente en la página */
+}
+
+/* Estilos para los párrafos */
+p {
+    text-align: center;              /* Centra el texto de los párrafos */
+    margin: 0 auto;                  /* Centra el párrafo dentro del contenedor usando márgenes automáticos */
+    max-width: 800px;                /* Limita el ancho de los párrafos para que sean más fáciles de leer */
+}
+
+/* Estilos para el video */
+video, iframe {
+    display: block;                  /* Hace que el elemento se comporte como un bloque (ocupa toda la línea) */
+    margin: 0 auto;                  /* Centra el video horizontalmente usando márgenes automáticos */
+    margin-top: 20px;                /* Agrega espacio por encima del video */
+}

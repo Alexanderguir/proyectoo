@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Define la codificación de caracteres como UTF-8 -->
+  <meta charset="UTF-8">
+  
+  <!-- Hace que la página sea responsive en móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Hack Hive - Ayuda</title>
+
+  <!-- Estilos embebidos (puedes separarlos en un archivo .css si prefieres) -->
+  <style>
+    /* --- Estilo general del cuerpo de la página --- */
+    body {
+      font-family: Arial, sans-serif; /* Fuente moderna y legible */
+      margin: 0; /* Elimina márgenes predeterminados */
+      padding: 0; /* Elimina padding predeterminado */
+      background-color: #f5f5f5; /* Fondo gris claro */
+      color: #333; /* Texto gris oscuro */
+    }
+
+    /* --- Barra superior fija (header) --- */
+    header {
+      background-color: #ffffff; /* Fondo blanco */
+      color: #333; /* Texto oscuro */
+      padding: 20px 0; /* Espaciado superior e inferior */
+      position: fixed; /* Fija la barra en la parte superior */
+      width: 100%; /* Ancho total */
+      top: 0;
+      left: 0;
+      z-index: 10; /* Se superpone sobre otros elementos */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra sutil */
+      text-align: center; /* Centra el texto */
+    }
+
+    /* --- Título del header --- */
+    header h1 {
+      margin: 0;
+      font-size: 2rem; /* Tamaño de fuente del título */
+    }
+
+    /* --- Botón de menú hamburguesa (solo en móvil) --- */
+    .menu-toggle {
+      display: none; /* Oculto por defecto */
+      cursor: pointer; /* Cursor tipo mano */
+      padding: 10px;
+      position: absolute; /* Posicionado sobre el header */
+      left: 20px; /* Alineado a la izquierda */
+      top: 25px;
+    }
+
+    /* --- Barras del menú hamburguesa --- */
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 5px 0;
+    }
+
+    /* --- Barra lateral (menú de navegación) --- */
+    .sidebar {
+      display: none; /* Oculto por defecto */
+      background-color: #f0f0f0; /* Fondo claro */
+      color: #333;
+      position: fixed; /* Fija en pantalla */
+      top: 0;
+      left: 0;
+      width: 250px; /* Ancho del menú */
+      height: 100%; /* Alto completo */
+      padding: 20px;
+      z-index: 9; /* Debajo del header */
+      box-shadow: 2px 0 6px rgba(0,0,0,0.1); /* Sombra lateral */
+    }
+
+    /* --- Título del menú lateral --- */
+    .sidebar-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* --- Lista de navegación --- */
+    .nav {
+      list-style: none; /* Elimina los puntos de la lista */
+      padding: 0;
+    }
+
+    /* --- Elementos de la lista --- */
+    .nav li {
+      margin: 15px 0;
+    }
+
+    /* --- Enlaces del menú lateral --- */
+    .nav a {
+      color: #333; /* Texto oscuro */
+      text-decoration: none; /* Sin subrayado */
+      font-size: 1.1rem;
+      display: block;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    /* --- Efecto hover en enlaces --- */
+    .nav a:hover {
+      background-color: #d0e6f7; /* Azul claro */
+    }
+
+    /* --- Separador entre el header y el contenido principal --- */
+    .menu-separator {
+      height: 70px; /* Espacio igual a la altura del header */
+    }
+
+    /* --- Estilos para el contenido principal --- */
+    .content {
+      padding: 20px;
+      max-width: 1000px; /* Ancho máximo centrado */
+      margin: auto;
+      background-color: #fff; /* Fondo blanco */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra suave */
+    }
+
+    /* --- Título del contenido --- */
+    .content h2 {
+      font-size: 1.8rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Encabezado principal -->
+  <header>
+    <h1>Hack Hive</h1>
+
+    <!-- Botón hamburguesa para abrir el menú lateral -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <!-- Menú lateral de navegación -->
+    <div class="sidebar" id="sidebar">
+      <h2 class="sidebar-title">Cecy</h2>
+      <ul class="nav">
+        <li><a href="index.html">Tipos de violencia</a></li>
+        <li><a href="about.html">Acerca de</a></li>
+        <li><a href="contact.html">Video de apoyo</a></li>
+        <li><a href="news.html">Denuncia</a></li>
+        <li><a href="php/logout.php">Cerrar Sesión</a></li>
+        <li><a href="remontada.html">The Art of Remontada</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Separador para que el contenido no quede detrás del header -->
+  <div class="menu-separator"></div>
+
+  <!-- Contenido principal -->
+  <main class="content">
+    <section>
+      <h2>Cecy Ayuda</h2>
+      <p>Aquí encontrarás información y recursos sobre la violencia de género, cómo identificarla y cómo buscar ayuda.</p>
+
+      <!-- Carrusel de imágenes (puedes cambiar las URLs) -->
+      <div id="carousel" style="margin-top: 20px;">
+        <img id="carousel-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/No_violencia_contra_la_mujer.svg/800px-No_violencia_contra_la_mujer.svg.png" alt="Imagen 1" style="max-width:100%; height:auto;">
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer style="background-color: #ffffff; text-align:center; padding:10px; margin-top:20px; color:#666;">
+    <p>&copy; 2024 PixelPort. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Script para el menú hamburguesa y carrusel de imágenes -->
+  <script>
+    // Menú hamburguesa
+    const menuToggle = document.getElementById('mobile-menu');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Carrusel de imágenes (puedes añadir más URLs)
+    const images = [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/No_violencia_contra_la_mujer.svg/800px-No_violencia_contra_la_mujer.svg.png",
+      "https://www.unwomen.org/sites/default/files/styles/large/public/2021-11/VAW_infographic_3.jpg",
+      "https://cdn.pixabay.com/photo/2021/03/08/06/50/women-6077065_1280.jpg"
+    ];
+    let index = 0;
+    const carouselImage = document.getElementById('carousel-image');
+
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      carouselImage.src = images[index];
+    }, 3000); // Cambia cada 3 segundos
+  </script>
+</body>
+</html>

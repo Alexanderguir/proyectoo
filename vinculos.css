@@ -1,0 +1,111 @@
+/* estilos de los vinculos de apoyo*/
+
+body {
+    font-family: Arial, sans-serif;/* Define la fuente de texto a Arial o una fuente sans-serif genérica */
+    line-height: 1.6;/* Establece la altura de línea para mejorar la legibilidad */
+    margin: 20px;/* Margen de 20px alrededor de todo el contenido del cuerpo */
+    background-image: url("imagenes/fondo.jpg"); /* Imagen de fondo */
+    
+}
+.container {
+    /* Estilos aplicados al contenedor principal con la clase 'container' */
+    max-width: 800px; /* Ancho máximo del contenedor para que no se extienda demasiado en pantallas grandes */
+    margin: auto;     /* Centra el contenedor horizontalmente en la página */
+    background: #fff; /* Color de fondo blanco para el contenido dentro del contenedor */
+    padding: 30px;    /* Espacio interno (relleno) de 30px alrededor del contenido */
+    border-radius: 8px; /* Bordes ligeramente redondeados para una apariencia más suave */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad al contenedor */
+}
+
+h1 {
+    /* Estilos aplicados a los encabezados de nivel 1 */
+    color: #d82c2c; /* Un color que evoca atención, pero no agresividad (rojo oscuro) */
+    text-align: center; /* Centra el texto del encabezado */
+    margin-bottom: 30px; /* Margen inferior para separar del contenido siguiente */
+}
+
+h2 {
+    /* Estilos aplicados a los encabezados de nivel 2 */
+    color: #555;          /* Color de texto gris oscuro para los subtítulos */
+    margin-top: 30px;     /* Margen superior para separar de la sección anterior */
+    border-bottom: 1px solid #eee; /* Línea delgada gris claro debajo del subtítulo */
+    padding-bottom: 5px;  /* Espacio entre el texto del subtítulo y la línea inferior */
+}
+
+p {
+    /* Estilos aplicados a los párrafos */
+    margin-bottom: 15px; /* Margen inferior para separar los párrafos entre sí */
+}
+
+ul {
+    /* Estilos aplicados a las listas desordenadas */
+    list-style-type: none; /* Elimina los puntos predeterminados de la lista */
+    padding: 0;            /* Elimina el relleno predeterminado de la lista */
+}
+
+li {
+    /* Estilos aplicados a los elementos de la lista */
+    margin-bottom: 10px; /* Margen inferior para separar los elementos de la lista */
+}
+
+a {
+    /* Estilos aplicados a todos los hipervínculos */
+    color: #007bff;         /* Color azul vibrante para los enlaces */
+    text-decoration: none;  /* Elimina el subrayado predeterminado de los enlaces */
+}
+
+a:hover {
+    /* Estilos aplicados a los hipervínculos cuando el cursor pasa por encima */
+    text-decoration: underline; /* Añade un subrayado al pasar el ratón para indicar que es interactivo */
+}
+
+.important-note {
+    /* Estilos aplicados al div con la clase 'important-note' */
+    background-color: #ffe0b2; /* Un tono suave de naranja para resaltar el recuadro */
+    padding: 15px;             /* Relleno interno para el contenido del recuadro */
+    border-left: 5px solid #ff9800; /* Borde izquierdo más grueso y de un naranja más fuerte */
+    margin-top: 25px;          /* Margen superior para separar de la sección anterior */
+    border-radius: 4px;        /* Bordes ligeramente redondeados para el recuadro */
+}
+
+.important-note h3 {
+    /* Estilos aplicados a los encabezados h3 dentro de un 'important-note' */
+    color: #ff9800; /* Color naranja más fuerte para el título de la nota importante */
+    margin-top: 0;  /* Elimina el margen superior predeterminado para que el título esté más cerca del borde */
+}
+.nav {
+    /* Estilos para el contenedor principal de la navegación, probablemente una barra de navegación. */
+    width: 100%; /* Asegura que la barra de navegación ocupe todo el ancho disponible de su elemento padre. */
+    padding: 15px; /* Añade un espacio interno de 15 píxeles alrededor del contenido de la navegación, arriba, abajo, izquierda y derecha. */
+    background-color: rgba(0,0,0,0.5); /* Establece un color de fondo negro con un 50% de transparencia (opacidad). */
+    text-align: left; /* Alinea el texto dentro de este contenedor a la izquierda. */
+}
+
+.nav .inicio {
+    /* Estilos específicos para un elemento con la clase 'inicio' que esté DENTRO de un elemento con la clase 'nav'.
+       Esto es ideal para un botón o un enlace de "Inicio". */
+    color: #fff; /* Define el color del texto como blanco. */
+    text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces. */
+    font-weight: 700; /* Establece el grosor de la fuente a negrita (700 es un valor común para negrita). */
+    font-size: 1.2em; /* Hace el tamaño de la fuente un 20% más grande que el tamaño de fuente predeterminado del elemento padre. */
+    padding: 11px 30px; /* Añade un relleno interno de 11 píxeles arriba y abajo, y 30 píxeles a la izquierda y derecha, haciendo que parezca un botón. */
+    border-radius: 30px; /* Redondea las esquinas del elemento, creando una forma de píldora o botón redondeado. */
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s; /* Define una transición suave para las propiedades 'background', 'color' y 'box-shadow' durante 0.3 segundos. Esto crea un efecto animado al interactuar. */
+    background: linear-gradient(90deg, #a4508b 0%, #f6d365 100%); /* Aplica un degradado lineal como fondo, desde un color morado oscuro (#a4508b) a un amarillo claro (#f6d365), de izquierda a derecha (90 grados). */
+    box-shadow: 0 2px 8px rgba(164, 80, 139, 0.21); /* Agrega una sombra sutil debajo del botón. Los valores son: desplazamiento X, desplazamiento Y, desenfoque, propagación y color con transparencia. */
+    border: 2px solid #fff3; /* Añade un borde sólido de 2 píxeles. '#fff3' es un blanco con baja opacidad, haciendo el borde semi-transparente. */
+}
+
+.nav .inicio:hover {
+    /* Estilos que se aplican al elemento con la clase 'inicio' cuando el cursor del ratón está sobre él. */
+    background: linear-gradient(90deg, #f6d365 0%, #a4508b 100%); /* Invierte el degradado de fondo, yendo de amarillo a morado. */
+    color: #232137; /* Cambia el color del texto a un gris muy oscuro, casi negro. */
+    box-shadow: 0 0 12px #a4508b77; /* Aumenta el desenfoque de la sombra y cambia su color para que coincida con el nuevo degradado, haciéndola más prominente. */
+}
+
+/* --- Estilo al pasar el mouse sobre los enlaces --- */
+.navbar a:hover {
+    /* Estilos que se aplican a CUALQUIER enlace (<a>) dentro de un elemento con la clase 'navbar' (¡Ojo! Hay una inconsistencia con '.nav'). */
+    background-color: #575757; /* Cambia el color de fondo a un gris oscuro cuando el mouse pasa sobre el enlace. */
+    color: white; /* Asegura que el color del texto sea blanco para que sea legible sobre el nuevo fondo. */
+}

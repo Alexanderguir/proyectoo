@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eliminar Denuncia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("imagenes/fondo.jpg"); /* Imagen de fondo, pon tu imagen en la carpeta imagenes */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <form action="php/eliminar_denuncia.php" method="post">
+    <h2>Eliminar Denuncia</h2>
+    <label for="id_denuncia">ID de la denuncia:</label>
+    <input type="text" id="id_denuncia" name="id_denuncia" required>
+    <button type="submit">Eliminar</button>
+  </form>
+</body>
+</html>

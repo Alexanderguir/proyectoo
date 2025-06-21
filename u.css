@@ -1,0 +1,195 @@
+/* GENERAL */
+/* Este comentario indica una sección para estilos generales que aplican a todo el sitio. */
+body {
+  /* Selecciona el elemento <body>, que contiene todo el contenido visible de la página web. */
+  font-family: 'Rubik', sans-serif;
+  /* Establece la fuente principal para todo el texto en el cuerpo del documento. 'Rubik' es la primera opción, seguida de una fuente sans-serif genérica si 'Rubik' no está disponible. */
+  margin: 0;
+  /* Elimina el margen externo predeterminado que los navegadores suelen aplicar al <body>, asegurando que el contenido comience desde los bordes de la ventana. */
+  background-color: #1c1c1c;
+  /* Define el color de fondo de la página web. El código hexadecimal #1c1c1c es un tono muy oscuro de gris, casi negro. */
+  color: white;
+  /* Establece el color de texto predeterminado para todo el contenido dentro del <body> a blanco. */
+}
+
+/* HEADER */
+/* Este comentario indica una sección para estilos específicos del encabezado de la página. */
+.header {
+  /* Selecciona el elemento con la clase 'header', que típicamente representa la barra de navegación superior. */
+  display: flex;
+  /* Establece el modelo de diseño a 'flexbox'. Esto permite un control flexible sobre la alineación y distribución de los elementos hijos. */
+  align-items: center;
+  /* Alinea los elementos hijos del contenedor flexible verticalmente en el centro. */
+  justify-content: space-between;
+  /* Distribuye los elementos hijos del contenedor flexible a lo largo del eje principal, colocando el primer elemento al inicio, el último al final, y espaciando uniformemente los elementos intermedios. */
+  background-color: #2c3e50;
+  /* Define el color de fondo del encabezado. El código hexadecimal #2c3e50 es un azul grisáceo oscuro. */
+  padding: 15px 20px;
+  /* Agrega un relleno interno de 15 píxeles arriba y abajo, y 20 píxeles a la izquierda y derecha del contenido del encabezado. */
+  position: sticky;
+  /* Posiciona el encabezado de forma "pegajosa". Se comporta como `relative` hasta que alcanza un umbral de desplazamiento, momento en el que se comporta como `fixed`. */
+  top: 0;
+  /* Cuando el encabezado se vuelve `fixed` (debido a `sticky`), se adhiere a la parte superior de la ventana del navegador. */
+  z-index: 999;
+  /* Establece el orden de apilamiento del encabezado. Un valor alto (999) asegura que el encabezado se muestre por encima de la mayoría de los demás elementos en la página. */
+}
+
+.logo h1 {
+  /* Selecciona el encabezado <h1> dentro de un elemento con la clase 'logo'. */
+  color: #f1c40f;
+  /* Establece el color del texto del título del logo a un tono de amarillo brillante. */
+}
+
+.menu a {
+  /* Selecciona todos los enlaces (<a>) dentro de un elemento con la clase 'menu'. */
+  color: white;
+  /* Define el color del texto de los enlaces a blanco. */
+  text-decoration: none;
+  /* Elimina el subrayado predeterminado de los enlaces. */
+  margin-left: 20px;
+  /* Agrega un margen de 20 píxeles a la izquierda de cada enlace, separándolos. */
+  font-weight: bold;
+  /* Establece el grosor de la fuente de los enlaces a negrita. */
+  transition: color 0.3s;
+  /* Aplica una transición suave al cambio de color de texto durante 0.3 segundos. */
+}
+
+.menu a:hover {
+  /* Selecciona los enlaces del menú cuando el cursor del ratón está sobre ellos (estado 'hover'). */
+  color: #f39c12;
+  /* Cambia el color del texto del enlace a un tono de naranja más vibrante al pasar el ratón, proporcionando retroalimentación visual. */
+}
+
+/* BOTÓN MENÚ HAMBURGUESA */
+/* Este comentario indica una sección para estilos relacionados con el botón del menú de hamburguesa. */
+.btn-menu label {
+  /* Selecciona el elemento <label> dentro de un elemento con la clase 'btn-menu'. Esta etiqueta probablemente contiene el icono del menú de hamburguesa. */
+  font-size: 28px;
+  /* Define el tamaño de la fuente del icono del menú de hamburguesa en 28 píxeles. */
+  color: white;
+  /* Establece el color del icono a blanco. */
+  cursor: pointer;
+  /* Cambia el cursor del ratón a una mano (puntero) cuando se pasa sobre el icono, indicando que es clicable. */
+}
+
+#btn-menu {
+  /* Selecciona el elemento con el ID 'btn-menu', que suele ser un checkbox oculto que controla la visibilidad del menú lateral. */
+  display: none;
+  /* Oculta completamente este elemento del flujo normal del documento, ya que solo se usa para controlar el menú vía CSS. */
+}
+
+/* FONDO OSCURO */
+/* Este comentario indica una sección para estilos del fondo oscuro que aparece con el menú lateral. */
+.capa {
+  /* Selecciona el elemento con la clase 'capa', que crea un overlay semitransparente sobre el contenido principal. */
+  position: fixed;
+  /* Fija la posición de la capa con respecto a la ventana del navegador. */
+  width: 100%;
+  /* Establece el ancho de la capa al 100% de la ventana. */
+  height: 100vh;
+  /* Establece la altura de la capa al 100% de la altura de la ventana (viewport height). */
+  top: 0;
+  /* Posiciona la capa en la parte superior. */
+  left: -100%;
+  /* Inicialmente, posiciona la capa completamente fuera de la vista hacia la izquierda (-100% de su propio ancho). */
+  background: rgba(0, 0, 0, 0.6);
+  /* Define un color de fondo semitransparente (negro con 60% de opacidad). */
+  z-index: 998;
+  /* Establece el orden de apilamiento de la capa. Un valor alto asegura que esté por encima del contenido principal, pero debajo del menú lateral. */
+  transition: 0.3s ease;
+  /* Aplica una transición suave de 0.3 segundos a todas las propiedades que cambien, con una función de temporización 'ease'. */
+}
+
+#btn-menu:checked ~ .capa {
+  /* Este es un truco CSS: Selecciona la 'capa' CUANDO el checkbox con ID 'btn-menu' está marcado y la 'capa' es su hermana siguiente. */
+  left: 0;
+  /* Mueve la capa a su posición original (0% de desplazamiento) desde la izquierda, haciéndola visible y creando el efecto de fondo oscuro. */
+}
+
+/* CONTENEDOR DEL MENÚ */
+/* Este comentario indica una sección para estilos del contenedor principal del menú lateral. */
+.container-menu {
+  /* Selecciona el elemento con la clase 'container-menu', que envuelve el contenido del menú lateral. */
+  position: fixed;
+  /* Fija la posición del contenedor del menú con respecto a la ventana del navegador. */
+  width: 100%;
+  /* Establece el ancho del contenedor del menú al 100% de la ventana. */
+  height: 100vh;
+  /* Establece la altura del contenedor del menú al 100% de la altura de la ventana. */
+  top: 0;
+  /* Posiciona el contenedor del menú en la parte superior. */
+  left: -100%;
+  /* Inicialmente, posiciona el contenedor del menú completamente fuera de la vista hacia la izquierda. */
+  z-index: 999;
+  /* Establece el orden de apilamiento del contenedor del menú. Un valor alto (999) asegura que el menú esté por encima de la capa de fondo y del contenido principal. */
+  transition: 0.3s;
+  /* Aplica una transición suave de 0.3 segundos a todas las propiedades que cambien. */
+}
+
+#btn-menu:checked ~ .container-menu {
+  /* Selecciona el '.container-menu' CUANDO el checkbox con ID 'btn-menu' está marcado y el '.container-menu' es su hermano siguiente. */
+  left: 0;
+  /* Mueve el contenedor del menú a su posición original (0% de desplazamiento) desde la izquierda, haciéndolo visible con una animación de deslizamiento. */
+}
+
+.cont-menu {
+  /* Selecciona el elemento con la clase 'cont-menu', que contiene el contenido real del menú lateral (enlaces, etc.). */
+  width: 280px;
+  /* Define el ancho fijo del contenido del menú lateral en 280 píxeles. */
+  background: #34495e;
+  /* Establece el color de fondo del menú lateral a un azul grisáceo más claro. */
+  height: 100%;
+  /* Establece la altura del contenido del menú al 100% de su contenedor padre (`.container-menu`). */
+  padding: 50px 20px;
+  /* Agrega un relleno interno de 50 píxeles arriba y abajo, y 20 píxeles a la izquierda y derecha dentro del menú. */
+  transition: transform 0.3s ease;
+  /* Aplica una transición suave de 0.3 segundos específicamente a la propiedad 'transform'. */
+  transform: translateX(-100%);
+  /* Inicialmente, desplaza el contenido del menú lateral completamente fuera de la vista hacia la izquierda. */
+}
+
+#btn-menu:checked ~ .container-menu .cont-menu {
+  /* Selecciona el '.cont-menu' dentro de '.container-menu' CUANDO el checkbox 'btn-menu' está marcado. */
+  transform: translateX(0);
+  /* Mueve el contenido del menú lateral a su posición original (0% de desplazamiento), haciéndolo visible con una animación de deslizamiento desde la izquierda. */
+}
+
+.cont-menu nav a {
+  /* Selecciona todos los enlaces (<a>) dentro de la navegación (<nav>) del menú lateral. */
+  display: block;
+  /* Hace que los enlaces se comporten como elementos de bloque, ocupando todo el ancho disponible y apilándose verticalmente. */
+  color: white;
+  /* Establece el color del texto de los enlaces a blanco. */
+  font-size: 18px;
+  /* Define el tamaño de la fuente de los enlaces en 18 píxeles. */
+  margin: 20px 0;
+  /* Agrega un margen de 20 píxeles arriba y abajo de cada enlace, y 0 píxeles a los lados. */
+  text-decoration: none;
+  /* Elimina el subrayado de los enlaces. */
+  transition: padding-left 0.3s;
+  /* Aplica una transición suave al cambio de `padding-left` durante 0.3 segundos. */
+}
+
+.cont-menu nav a:hover {
+  /* Selecciona los enlaces de navegación del menú lateral cuando el cursor del ratón está sobre ellos. */
+  padding-left: 10px;
+  /* Aumenta el relleno izquierdo a 10 píxeles, creando un efecto visual de "indentación" o resaltado al pasar el ratón. */
+  background-color: #2c3e50;
+  /* Cambia el color de fondo del enlace a un azul grisáceo oscuro al pasar el ratón. */
+}
+
+.close-btn {
+  /* Selecciona el elemento con la clase 'close-btn', que es el botón para cerrar el menú lateral. */
+  position: absolute;
+  /* Posiciona el botón de forma absoluta con respecto a su contenedor (`.cont-menu`). */
+  top: 10px;
+  /* Posiciona el botón a 10 píxeles del borde superior de su contenedor. */
+  right: 20px;
+  /* Posiciona el botón a 20 píxeles del borde derecho de su contenedor. */
+  font-size: 25px;
+  /* Define el tamaño de la fuente del botón de cerrar en 25 píxeles (probablemente una 'X'). */
+  cursor: pointer;
+  /* Cambia el cursor del ratón a una mano (puntero) cuando se pasa sobre el botón, indicando que es clicable. */
+  color: white;
+  /* Establece el color del texto (o icono) del botón a blanco. */
+}

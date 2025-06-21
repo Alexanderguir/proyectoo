@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Codificación del documento -->
+    <title>Formulario de Opinión</title> <!-- Título en la pestaña -->
+    <link rel="icon" href="imagenes/logo.jpg" type="image/png"> <!-- Ícono en pestaña -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("imagenes/fondo.jpg");
+            padding: 0px;
+        }
+
+        .nav {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(0,0,0,0.5);
+            text-align: left;
+        }
+
+        .nav .inicio {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            padding: 11px 30px;
+            border-radius: 30px;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            background: linear-gradient(90deg, #a4508b 0%, #f6d365 100%);
+            box-shadow: 0 2px 8px rgba(164, 80, 139, 0.21);
+            border: 2px solid #fff3;
+        }
+
+        .nav .inicio:hover {
+            background: linear-gradient(90deg, #f6d365 0%, #a4508b 100%);
+            color: #232137;
+            box-shadow: 0 0 12px #a4508b77;
+        }
+
+        .form-container {
+            background-color: azure;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        textarea, input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #91d4c7;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            width: 100%;
+            background: linear-gradient(to right, #18db39, #5f54ff);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #mensaje {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+
+    <nav class="nav">
+        <a href="cecy.html" class="inicio">Inicio</a>
+    </nav>
+
+    <script defer src="formulario.js"></script>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Tu Opinión</h2>
+
+    <!-- Formulario principal -->
+    <form action="php/guardar_opinion.php" method="POST" style="background-color: rgb(222, 154, 222);" onsubmit="return mostrarMensaje()">
+
+        <label for="sitio">¿Te gustó el sitio?</label>
+        <input type="text" id="sitio" name="sitio" placeholder="Sí / No" required>
+
+        <label for="mejoras">¿Qué nos recomendarías mejorar?</label>
+        <textarea id="mejoras" name="mejoras" rows="4" required></textarea>
+
+        <label for="parte_mejorar">¿Qué parte específica podemos mejorar?</label>
+        <textarea id="parte_mejorar" name="parte_mejorar" rows="3" required></textarea>
+
+        <label for="respuesta">Nivel de satisfacción:</label>
+        <select id="respuesta" name="satisfaccion" required>
+            <option value="">-- Selecciona una opción --</option>
+            <option value="Muy satisfecho">Muy satisfecho</option>
+            <option value="Satisfecho">Satisfecho</option>
+            <option value="Neutral">Neutral</option>
+            <option value="Insatisfecho">Insatisfecho</option>
+            <option value="Muy insatisfecho">Muy insatisfecho</option>
+        </select>
+
+        <!-- Área del mensaje dinámico -->
+        <p id="mensaje"></p>
+
+        <!-- Botón único de envío -->
+        <button type="submit">Enviar Opinión</button>
+    </form>
+</div>
+
+<!-- Script para mostrar mensaje de satisfacción dinámicamente -->
+<script>
+    function mostrarMensaje() {
+        const seleccion = document.getElementById("respuesta").value;
+        const mensaje = document.getElementById("mensaje");
+
+        if (seleccion === "") {
+            mensaje.textContent = "Por favor, selecciona una opción válida.";
+            return false; // Evita enviar el formulario
+        }
+
+        mensaje.textContent = "Gracias por tu opinión: " + seleccion + ".";
+        return true; // Permite enviar el formulario
+    }
+</script>
+
+<!-- Script para bloquear números en texto -->
+<script>
+    const inputs = document.querySelectorAll('input[type="text"], textarea');
+
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            input.value = input.value.replace(/[0-9]/g, '');
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <title>Modificar Denuncia</title> <style>
+    /* Estilos generales del cuerpo de la página */
+    body {
+      font-family: Arial, sans-serif; /* Define la fuente predeterminada para el texto. */
+      background-image: url("imagenes/fondo.jpg"); /* Establece una imagen de fondo para el cuerpo. */
+      background-size: cover; /* Ajusta el tamaño de la imagen de fondo para cubrir todo el área. */
+      background-position: center; /* Centra la imagen de fondo. */
+      display: flex; /* Utiliza flexbox para la disposición de los elementos. */
+      justify-content: center; /* Centra horizontalmente el contenido de flexbox. */
+      align-items: center; /* Centra verticalmente el contenido de flexbox. */
+      min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana. */
+      margin: 0; /* Elimina el margen predeterminado del cuerpo. */
+    }
+
+    /* Estilos para el formulario */
+    form {
+      background: rgba(255, 255, 255, 0.95); /* Establece un fondo blanco semitransparente para el formulario. */
+      padding: 30px; /* Define el espacio de relleno dentro del formulario. */
+      border-radius: 15px; /* Redondea las esquinas del formulario. */
+      box-shadow: 0 0 15px rgba(0,0,0,0.3); /* Aplica una sombra al formulario. */
+      max-width: 600px; /* Define el ancho máximo del formulario. */
+      width: 100%; /* El formulario ocupa el 100% del ancho disponible hasta el `max-width`. */
+    }
+
+    /* Estilos para el título H2 */
+    h2 {
+      text-align: center; /* Centra el texto del título H2. */
+      color: #2c3e50; /* Define el color del texto del título. */
+      margin-bottom: 20px; /* Agrega un margen inferior al título. */
+    }
+
+    /* Estilos para las etiquetas de los campos */
+    label {
+      display: block; /* Muestra las etiquetas como bloques, ocupando su propia línea. */
+      margin: 10px 0 5px; /* Define los márgenes superior, horizontal e inferior de las etiquetas. */
+      color: #34495e; /* Define el color del texto de las etiquetas. */
+    }
+
+    /* Estilos para todos los campos de entrada */
+    input {
+      padding: 10px; /* Define el espacio de relleno dentro de los campos de entrada. */
+      width: 100%; /* Los campos de entrada ocupan el 100% del ancho disponible. */
+      border: 1px solid #ccc; /* Define un borde gris claro para los campos. */
+      border-radius: 5px; /* Redondea las esquinas de los campos. */
+      box-sizing: border-box; /* Incluye el padding y el border en el ancho y alto total del elemento. */
+    }
+
+    /* Estilos para los botones de submit y otros botones */
+    input[type="submit"], button {
+      background: #3498db; /* Establece un color de fondo azul para los botones. */
+      color: #fff; /* Define el color del texto de los botones como blanco. */
+      border: none; /* Elimina el borde de los botones. */
+      margin-top: 15px; /* Agrega un margen superior a los botones. */
+      cursor: pointer; /* Muestra un cursor de "mano" al pasar sobre los botones. */
+      padding: 10px 15px; /* Define el espacio de relleno dentro de los botones. */
+    }
+
+    /* Estilos para los botones al pasar el ratón (hover) */
+    input[type="submit"]:hover, button:hover {
+      background: #2980b9; /* Cambia el color de fondo de los botones a un azul más oscuro al pasar el ratón. */
+    }
+
+    /* Estilos para la sección de datos de la denuncia (inicialmente oculta) */
+    #datosDenuncia {
+      display: none; /* Oculta la sección de datos de la denuncia por defecto. */
+    }
+  </style>
+
+  <script>
+    // Función para buscar una denuncia por su ID
+    function buscarDenunciaPorId() {
+      const id = document.getElementById("id").value; // Obtiene el valor del campo de entrada con ID "id".
+
+      if (id === "") { // Comprueba si el campo ID está vacío.
+        alert("Por favor ingresa un ID."); // Muestra una alerta si el ID está vacío.
+        return; // Sale de la función.
+      }
+
+      // Realiza una solicitud fetch al servidor para buscar la denuncia
+      fetch("php/busqueda.php", { // La URL del script PHP que manejará la búsqueda.
+        method: "POST", // Usa el método POST para enviar los datos.
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }, // Define el tipo de contenido de la solicitud.
+        body: "id=" + encodeURIComponent(id) // Envía el ID como parte del cuerpo de la solicitud, codificándolo para URL.
+      })
+      .then(response => response.json()) // Convierte la respuesta del servidor a formato JSON.
+      .then(data => { // Procesa los datos JSON recibidos.
+        if (data.error) { // Si la respuesta contiene un error.
+          alert(data.error); // Muestra una alerta con el mensaje de error.
+          document.getElementById("datosDenuncia").style.display = "none"; // Oculta la sección de datos de la denuncia.
+        } else { // Si no hay error, se encontraron datos.
+          document.getElementById("datosDenuncia").style.display = "block"; // Muestra la sección de datos de la denuncia.
+          document.getElementById("nombre").value = data.nombre; // Rellena el campo "nombre" con el dato recibido.
+          document.getElementById("edad").value = data.edad; // Rellena el campo "edad" con el dato recibido.
+          document.getElementById("telefono").value = data.telefono; // Rellena el campo "telefono" con el dato recibido.
+          document.getElementById("email").value = data.email; // Rellena el campo "email" con el dato recibido.
+          document.getElementById("genero").value = data.genero; // Rellena el campo "genero" con el dato recibido.
+          document.getElementById("violencia").value = data.violencia; // Rellena el campo "violencia" con el dato recibido.
+          document.getElementById("lugar").value = data.lugar; // Rellena el campo "lugar" con el dato recibido.
+          document.getElementById("agresor").value = data.agresor; // Rellena el campo "agresor" con el dato recibido.
+          document.getElementById("consciente").value = data.consciente; // Rellena el campo "consciente" con el dato recibido.
+          document.getElementById("fecha_suceso").value = data.fecha_suceso; // Rellena el campo "fecha_suceso" con el dato recibido.
+        }
+      })
+      .catch(error => { // Captura cualquier error que ocurra durante la solicitud fetch.
+        alert("Error al conectar con el servidor."); // Muestra una alerta de error de conexión.
+        console.error(error); // Imprime el error en la consola del navegador para depuración.
+      });
+    }
+  </script>
+</head>
+<body>
+  <form action="php/modificar_denuncia.php" method="POST"> <h2>Modificar Denuncia</h2> <label for="id">ID de la denuncia:</label> <input type="number" id="id" name="id" required> <button type="button" onclick="buscarDenunciaPorId()">Buscar ID</button> <div id="datosDenuncia"> <label for="nombre">Nombre:</label> <input type="text" id="nombre" name="nombre" required> <label for="edad">Edad:</label> <input type="number" id="edad" name="edad" required> <label for="telefono">Teléfono:</label> <input type="text" id="telefono" name="telefono" required> <label for="email">Email:</label> <input type="email" id="email" name="email" required> <label for="genero">Género:</label> <input type="text" id="genero" name="genero" required> <label for="violencia">Violencia:</label> <input type="text" id="violencia" name="violencia" required> <label for="lugar">Lugar:</label> <input type="text" id="lugar" name="lugar" required> <label for="agresor">Agresor:</label> <input type="text" id="agresor" name="agresor" required> <label for="consciente">Consciente:</label> <input type="text" id="consciente" name="consciente" required> <label for="fecha_suceso">Fecha del suceso:</label> <input type="date" id="fecha_suceso" name="fecha_suceso" required> <input type="submit" value="Modificar denuncia"> </div>
+  </form>
+</body>
+</html>

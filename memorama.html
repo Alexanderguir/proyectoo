@@ -1,0 +1,242 @@
+<!--Crear un juego de memorama con imágenes, animaciones y guardado del récord 
+utilizando localStorage.-->
+<!DOCTYPE html> <!-- Tipo de documento HTML5 -->
+<html lang="es"> <!-- Página en español -->
+<head>
+<meta charset="UTF-8"> <!-- Codificación de caracteres -->
+<title>Memorama con Imágenes</title> <!-- Título de la pestaña -->
+<style>
+/* ==== ESTILOS GENERALES ==== */
+body {
+font-family: Arial, sans-serif; /* Fuente para todo el cuerpo */
+background-color: #fdfdfd; /* Fondo blanco grisáceo */
+text-align: center; /* Centrar texto en pantalla */
+padding: 20px; /* Margen interno alrededor */
+}
+h1 {
+color: #2c3e50; /* Color del título */
+}
+#score-board {
+margin: 15px 0; /* Espacio arriba y abajo del marcador */
+}
+/* ==== TABLERO DEL JUEGO ==== */
+.game-container {
+display: grid; /* Usamos grid para organizar las cartas */
+grid-template-columns: repeat(4, 120px); /* 4 columnas de 120px */
+grid-gap: 15px; /* Separación entre cartas */
+justify-content: center; /* Centra el grid horizontalmente */
+margin-top: 20px; /* Margen superior */
+}
+/* ==== CARTA BASE ==== */
+.card {
+width: 120px; /* Ancho de la carta */
+height: 120px; /* Alto de la carta */
+perspective: 1000px; /* Efecto 3D para giro */
+}
+/* ==== CONTENEDOR INTERNO DE LA CARTA ==== */
+.card-inner {
+width: 100%; /* Ocupa todo el ancho de la carta */
+height: 100%; /* Ocupa todo el alto de la carta */
+position: relative; /* Posicionamiento relativo para las caras */
+transform-style: preserve-3d; /* Mantiene efecto 3D al girar */
+transition: transform 0.6s; /* Tiempo de animación de giro */
+}
+/* ==== CUANDO SE GIRA LA CARTA ==== */
+.card.flipped .card-inner {
+transform: rotateY(180deg); /* Gira la carta horizontalmente */
+}
+/* ==== CARAS DE LA CARTA ==== */
+.card-front, .card-back {
+    position: absolute; /* Posiciona ambas caras en el mismo lugar */
+width: 100%; /* Ocupan todo el tamaño de la carta */
+height: 100%;
+backface-visibility: hidden; /* Oculta la cara trasera al girar */
+border-radius: 10px; /* Bordes redondeados */
+overflow: hidden; /* Oculta exceso de contenido */
+}
+/* ==== CARA FRONTAL ==== */
+.card-front {
+background-color: #3498db; /* Azul */
+display: flex; /* Centra el símbolo ? */
+align-items: center;
+justify-content: center;
+color: white; /* Letra blanca */
+font-size: 24px; /* Tamaño de la letra */
+}
+/* ==== CARA POSTERIOR ==== */
+.card-back {
+transform: rotateY(180deg); /* Para verse bien al girar */
+background-color: white; /* Fondo blanco */
+}
+.card-back img {
+width: 100%; /* Imagen llena la carta */
+height: 100%;
+object-fit: cover; /* Mantiene proporción sin deformar */
+}
+/* ==== BOTÓN DE REINICIO ESTILIZADO ==== */
+#restart-btn {
+background: linear-gradient(45deg, #6a11cb, #2575fc); /* Gradiente moderno */
+color: white; /* Texto blanco */
+border: none; /* Sin borde */
+padding: 12px 25px; /* Espaciado interno */
+font-size: 16px; /* Tamaño de texto */
+border-radius: 30px; /* Bordes redondeados */
+cursor: pointer; /* Manito al pasar */
+margin-top: 20px; /* Separación del contenido superior */
+transition: transform 0.2s ease, box-shadow 0.3s ease; /* Animación suave */
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra externa */
+}
+#restart-btn:hover {
+transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}
+#restart-btn:active {
+transform: scale(0.97); /* Disminuye un poco al presionar */
+}
+</style>
+</head>
+<body>
+<!-- Botón para reiniciar el juego -->
+<button id="restart-btn" onclick="restartGame()"> Reiniciar Juego</button>
+<h1>Memorama con Imágenes</h1> <!-- Título del juego -->
+<!-- Sección para mostrar el marcador -->
+<div id="score-board">
+<p>Intentos: <span id="attempts">0</span></p> <!-- Contador de intentos -->
+<p>Récord: <span id="best-score">--</span> intentos</p> <!-- Mejor puntaje -->
+</div>
+<!-- Contenedor donde se colocan las cartas -->
+<div class="game-container" id="game-board">
+<!-- Las cartas se agregarán aquí dinámicamente con JavaScript -->
+</div>
+<script>
+// ==== VARIABLES GLOBALES ====
+const board = document.getElementById('game-board'); // Contenedor del tablero
+const attemptsText = document.getElementById('attempts'); // Texto para mostrar intentos
+const bestScoreText = document.getElementById('best-score'); // Texto para mostrar récord
+// ==== CARGA DE SONIDOS ====
+const flipSound = new Audio('Sonidos/Ding.mp3'); // Sonido al girar carta
+const winSound = new Audio('Sonidos/Aplausos.mp3'); // Sonido al ganar
+// Lista de imágenes duplicadas (pares)
+const imageUrls = [
+'Imagenes/emoji2.jpg', // emoji corazón
+'Imagenes/emoji3.jpg', // emoji llorar
+'Imagenes/emoji4.jpg', // emoji guiño
+'Imagenes/emoji5.jpg', // emoji sorpresa
+];
+const cardsArray = shuffle([...imageUrls, ...imageUrls]); // Duplicamos y mezclamos
+let firstCard = null; // Primera carta seleccionada
+let secondCard = null; // Segunda carta seleccionada
+let lockBoard = false; // Bloqueo para evitar doble click
+let attempts = 0; // Contador de intentos
+// ==== FUNCIÓN PARA MEZCLAR CARTAS ====
+function shuffle(array) {
+return array.sort(() => 0.5 - Math.random()); // Orden aleatorio
+}
+// ==== CREA LAS CARTAS Y LAS AGREGA AL TABLERO ====
+function createBoard() {
+cardsArray.forEach((imgUrl) => {
+const card = document.createElement('div'); // Crea contenedor de carta
+card.classList.add('card'); // Aplica clase
+const inner = document.createElement('div'); // Parte interna para animación
+inner.classList.add('card-inner');
+const front = document.createElement('div'); // Cara frontal
+front.classList.add('card-front');
+front.textContent = '?'; // Muestra símbolo oculto
+const back = document.createElement('div'); // Cara trasera
+back.classList.add('card-back');
+const img = document.createElement('img'); // Imagen en la parte trasera
+img.src = imgUrl; // Asigna la imagen
+back.appendChild(img); // Agrega imagen a la cara trasera
+inner.appendChild(front); // Agrega cara frontal
+inner.appendChild(back); // Agrega cara trasera
+card.appendChild(inner); // Inserta parte interna en la carta
+card.dataset.image = imgUrl; // Guarda imagen asociada para comparación
+card.addEventListener('click', () => flipCard(card)); // Evento de clic
+board.appendChild(card); // Agrega carta al tablero
+});
+}
+// ==== VOLTEA UNA CARTA ====
+function flipCard(card) {
+if (lockBoard || card.classList.contains('flipped')) return; // Evita errores
+card.classList.add('flipped'); // Añade clase para mostrar imagen
+if (!firstCard) {
+firstCard = card; // Selecciona la primera carta
+return;
+}
+secondCard = card; // Selecciona la segunda carta
+attempts++; // Aumenta intentos
+attemptsText.textContent = attempts; // Muestra intentos
+checkForMatch(); // Verifica si son iguales
+}
+// ==== VERIFICA SI LAS DOS CARTAS COINCIDEN ====
+function checkForMatch() {
+const match = firstCard.dataset.image === secondCard.dataset.image; // Compara 
+imágenes
+if (match) {
+disableMatchedCards(); // Si son iguales, deshabilita
+} else {
+unflipCards(); // Si no, da vuelta de nuevo
+}
+}
+// ==== DESHABILITA EVENTO CLICK DE CARTAS IGUALES ====
+function disableMatchedCards() {
+firstCard.removeEventListener('click', flipCard); // Quita evento
+secondCard.removeEventListener('click', flipCard);
+resetSelection(); // Reinicia para siguiente jugada
+checkGameOver(); // Verifica si se ganó
+}
+// ==== VOLTEA LAS CARTAS NUEVAMENTE SI NO SON IGUALES ====
+function unflipCards() {
+lockBoard = true; // Bloquea durante animación
+setTimeout(() => {
+firstCard.classList.remove('flipped'); // Quita clase flipped
+secondCard.classList.remove('flipped');
+resetSelection(); // Limpia selección
+}, 1000); // Espera 1 segundo
+}
+// ==== REINICIA VARIABLES DE SELECCIÓN ====
+function resetSelection() {
+[firstCard, secondCard] = [null, null]; // Vuelve a null
+lockBoard = false; // Desbloquea
+}
+// ==== VERIFICA SI TODAS LAS CARTAS ESTÁN EMPAREJADAS ====
+function checkGameOver() {
+const flippedCards = document.querySelectorAll('.flipped'); // Todas las cartas giradas
+if (flippedCards.length === cardsArray.length) { // Si todas están emparejadas
+setTimeout(() => {
+alert(`¡Ganaste en ${attempts} intentos!`); // Mensaje de victoria
+saveBestScore(); // Guarda récord
+}, 500);
+}
+}
+// ==== GUARDA EL MEJOR PUNTAJE EN LOCALSTORAGE ====
+function saveBestScore() {
+const best = localStorage.getItem('bestScore'); // Recupera mejor puntaje
+if (!best || attempts < parseInt(best)) { // Si no hay récord o lo mejora
+    localStorage.setItem('bestScore', attempts); // Guarda nuevo récord
+}
+updateBestScore(); // Actualiza texto en pantalla
+}
+// ==== MUESTRA EL MEJOR PUNTAJE EN PANTALLA ====
+function updateBestScore() {
+const best = localStorage.getItem('bestScore'); // Recupera de localStorage
+bestScoreText.textContent = best ? best : '--'; // Muestra o '--' si no hay
+}
+// ==== INICIA EL JUEGO AL CARGAR LA PÁGINA ====
+createBoard(); // Crea el tablero
+updateBestScore(); // Muestra récord guardado
+// ==== FUNCIÓN PARA REINICIAR EL JUEGO ====
+function restartGame() {
+board.innerHTML = ''; // Borra todas las cartas del tablero
+[firstCard, secondCard] = [null, null]; // Reinicia selección de cartas
+lockBoard = false; // Desbloquea clics
+attempts = 0; // Reinicia contador de intentos
+attemptsText.textContent = attempts; // Actualiza visualmente
+const newShuffled = shuffle([...imageUrls, ...imageUrls]); // Nueva mezcla
+cardsArray.length = 0; // Limpia el array original
+cardsArray.push(...newShuffled); // Carga nuevas cartas mezcladas
+createBoard(); // Crea el nuevo tablero
+}
+</script>
+</body>
+</html>
