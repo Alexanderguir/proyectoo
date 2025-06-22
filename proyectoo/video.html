@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagenes/logo.jpg" type="image/png">
+    <title>Nuestra página web</title>
+    <!-- Estilos personalizados tornasol animado y modernos -->
+    <style>
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e3e6f3 100%);
+            color: #232137;
+            margin: 0;
+            padding: 0;
+            letter-spacing: 0.03em;
+        }
+        .nav {
+            background: linear-gradient(90deg, #2d68f0 0%, #a4508b 100%);
+            padding: 18px 0;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(79, 93, 117, 0.18);
+            border-bottom: 4px solid #7f53ac;
+        }
+        .nav .inicio {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            padding: 11px 30px;
+            border-radius: 30px;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            background: linear-gradient(90deg, #a4508b 0%, #f6d365 100%);
+            box-shadow: 0 2px 8px rgba(164, 80, 139, 0.21);
+            border: 2px solid #fff3;
+        }
+        .nav .inicio:hover {
+            background: linear-gradient(90deg, #f6d365 0%, #a4508b 100%);
+            color: #232137;
+            box-shadow: 0 0 12px #a4508b77;
+        }
+        main {
+            max-width: 740px;
+            margin: 44px auto;
+            background: rgba(255,255,255,0.97);
+            border-radius: 24px;
+            box-shadow: 0 8px 36px 8px #a4508b22, 0 1px 8px #22223b22;
+            padding: 38px 32px 44px 32px;
+            backdrop-filter: blur(2px);
+            border: 3px solid transparent;
+            position: relative;
+            z-index: 1;
+        }
+        h2, h3 {
+            color: #a4508b;
+            text-align: center;
+            margin-bottom: 18px;
+            text-shadow: 2px 4px 10px #f6d36533, 0 0 8px #a4508b22;
+            letter-spacing: 0.07em;
+        }
+        h2 {
+            font-size: 2.35em;
+            margin-top: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 800;
+        }
+        h3 {
+            font-size: 1.25em;
+            margin-top: 30px;
+        }
+        p {
+            line-height: 1.8;
+            font-size: 1.13em;
+            margin: 22px 0;
+            text-align: justify;
+            color: #232137;
+            text-shadow: 0 0px 8px #fff, 0 0 2px #f8fafc;
+        }
+        /* Estilo tornasol animado para el video y cuadro de texto */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            margin: 38px auto 42px auto;
+            border-radius: 30px;
+            overflow: visible;
+            box-shadow: 0 8px 34px 10px #a4508b33, 0 1px 5px #22223b22;
+        }
+        .tornasol-animated-border {
+            position: absolute;
+            inset: -6px;
+            z-index: 0;
+            border-radius: 36px;
+            padding: 0;
+            background: conic-gradient(from var(--angle, 0deg), #7f53ac 0%, #a4508b 25%, #f6d365 50%, #43e97b 75%, #38f9d7 100%);
+            filter: blur(10px) brightness(1.16);
+            opacity: 0.77;
+            animation: rotateTornasol 8s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes rotateTornasol {
+            to {
+                --angle: 360deg;
+            }
+        }
+        .video-tornasol {
+            width: 100%;
+            height: 340px;
+            border: none;
+            display: block;
+            position: relative;
+            z-index: 2;
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 0 0 8px #fff2;
+        }
+        .tornasol-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 340px;
+            z-index: 3;
+            pointer-events: none;
+            border-radius: 30px 30px 0 0;
+            background: conic-gradient(from var(--angle, 0deg), #a4508bb3, #f6d36599 30%, #38f9d799 60%, #43e97bcc 85%, #a4508bb3 100%);
+            opacity: 0.6;
+            mix-blend-mode: color-dodge;
+            animation: rotateOverlay 7s linear infinite;
+        }
+        @keyframes rotateOverlay {
+            to {
+                --angle: 360deg;
+            }
+        }
+
+        .video-text-box-wrapper {
+            position: absolute;
+            left: 50%;
+            top: 258px;
+            transform: translateX(-50%);
+            width: 94%;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-text-box-border {
+            position: absolute;
+            inset: -4px;
+            border-radius: 0 0 30px 30px;
+            background: conic-gradient(from var(--angle, 0deg), #43e97b 0%, #38f9d7 20%, #a4508b 40%, #f6d365 60%, #43e97b 100%);
+            opacity: 0.8;
+            filter: blur(8px) brightness(1.13);
+            animation: rotateBox 6s linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+        @keyframes rotateBox {
+            to {
+                --angle: 360deg;
+            }
+        }
+        .video-text-box {
+            width: 100%;
+            min-height: 108px;
+            background: rgba(255,255,255,0.98);
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 2px 20px #a4508b19, 0 2px 36px #f6d36517;
+            padding: 21px 22px 17px 22px;
+            font-size: 1.13em;
+            color: #232137;
+            font-weight: 600;
+            text-align: center;
+            text-shadow: 0 1px 8px #fff, 0 0 2px #f8fafc;
+            position: relative;
+            z-index: 2;
+            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+            letter-spacing: 0.04em;
+            backdrop-filter: blur(0.5px);
+        }
+        /* Responsive */
+        @media (max-width: 720px) {
+            main {
+                padding: 10px 2vw 18px 2vw;
+                margin: 12px 0;
+            }
+            .video-container {
+                max-width: 99vw;
+                border-radius: 20px;
+            }
+            .tornasol-animated-border, .video-container {
+                border-radius: 20px;
+            }
+            .video-tornasol, .tornasol-overlay {
+                height: 170px !important;
+                border-radius: 20px 20px 0 0;
+            }
+            .video-text-box-wrapper, .video-text-box-border {
+                top: 80px;
+                border-radius: 0 0 20px 20px;
+            }
+            .video-text-box {
+                border-radius: 0 0 20px 20px;
+                font-size: 1em;
+                padding: 13px 8px 11px 8px;
+            }
+        }
+        /* Animación de entrada */
+        main, .nav {
+            animation: fadein 1s;
+        }
+        @keyframes fadein {
+            from { opacity: 0; transform: translateY(24px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav class="nav">
+        <a href="cecy.html" class="inicio">Inicio</a>
+    </nav>
+
+    <main>
+        <!-- Título principal -->
+        <h2>¿Qué es la violencia de género?</h2>
+
+        <!-- Información explicativa -->
+        <p>
+            La violencia de género es un tipo de agresión física o psicológica ejercida contra cualquier persona
+            o grupo de personas basada en su orientación o identidad sexual, sexo o género.
+            Este tipo de violencia se desarrolla en un sistema de relaciones de dominio de los hombres sobre las mujeres.
+        </p>
+
+        <p>
+            La Organización de las Naciones Unidas (ONU) define la violencia contra las mujeres como todo acto
+            de violencia de género que resulte o pueda tener como resultado un daño físico, sexual o psicológico
+            para la mujer, inclusive las amenazas de tales actos, la coerción o la privación arbitraria de libertad,
+            tanto si se producen en la vida pública como en la privada.
+        </p>
+
+        <p>
+            La Ley General de Acceso de las Mujeres a una Vida Libre de Violencia (LGAMVLV), en su artículo 4º,
+            fracción IV, establece como violencia contra la mujer cualquier acción u omisión, basada en su género,
+            que le cause daño o sufrimiento psicológico, físico, patrimonial, económico, sexual o la muerte,
+            tanto en el ámbito privado como en el público.
+        </p>
+
+        <!-- Introducción al video -->
+        <h3>
+            En este apartado se mostrará un video sobre la violencia de género para comprender mejor el tema.
+        </h3>
+
+        <!-- Video incrustado de YouTube decorado tornasol, texto visible y borde animado diferente -->
+        <div class="video-container">
+            <div class="tornasol-animated-border"></div>
+            <iframe class="video-tornasol" width="600" height="340" src="https://www.youtube.com/embed/pR6KYyKhIMc" 
+                title="Video sobre violencia de género" frameborder="0" allowfullscreen></iframe>
+            <div class="tornasol-overlay"></div>
+            <div class="video-text-box-wrapper">
+                <div class="video-text-box-border"></div>
+                <div class="video-text-box">
+                    En este cortometraje se narra la historia de Jorge, un padre de familia que presencia un ataque sexual contra María,
+                    pero decide no intervenir por miedo. Aunque intenta seguir con su vida como si nada hubiera pasado, la culpa comienza
+                    a atormentarlo, haciéndose cada vez más presente hasta volverse insoportable.<br><br>
+                    Esta es una reflexión sobre el peso de la omisión y la responsabilidad moral frente a la injusticia.
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

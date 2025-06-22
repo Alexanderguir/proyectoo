@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CECY Ayuda - Visibilizando la Violencia de Género en Chimalhuacán</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Montserrat+Alternates:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="Untitled-2.css">
+</head>
+<body>
+    <div class="capa"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="btn-menu">
+                <label for="btn-menu">☰</label>
+            </div>
+            <div class="logo">
+                <h1>CECY Ayuda</h1>
+            </div>
+            <nav class="menu">
+                <a href="nosotros.html" class="active">Nosotros</a>
+                <a href="https://www.youtube.com/@hack_hive-405_PEC">contacto</a>
+                <a href="hipervinculos.html">links de ayuda</a>
+            </nav>
+        </div>
+    </header>
+
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <label for="btn-menu">✖</label>
+            <nav>
+                <a href="tipos.html">Tipos</a>
+                <a href="video.html">Video de apoyo</a>
+                <a href="iniciores.html">Denuncia</a>
+                <a href="opinion.html">Sugerencias</a>
+                <a href="test.html">Test</a>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <section id="welcome" class="welcome-section reveal">
+            <h2>Bienvenidos a CECY Ayuda</h2>
+            <p>Está página fue diseñada con el propósito de dar a conocer el tema de la violencia de genero , sus tipos y como identificarla  , también proporcionamos como denunciarla   , queremos  dar a conocer más sobre este tema  y las personas lo identifiquen</p>
+        </section>
+        <section id="video" class="reveal">
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
+                <iframe style="position: absolute; top: 8; left: 8; width: 100%; height: 100%;"
+                    src="videos/violencia de genero.mp4"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <section id="denuncia" class="reveal">
+            <h2>¿Que es la violencia de genero?</h2>
+            <p>¿Qué es la Violencia de Género?
+                La violencia de género es toda acción de agresión, física, psicológica o emocional, ejercida contra una persona debido a su género. Este tipo de violencia afecta principalmente a mujeres y personas de géneros no binarios, y suele estar relacionada con las desigualdades estructurales y culturales que aún persisten en nuestra sociedad.</p>
+            <p>También se pueden listar números de emergencia y organizaciones de apoyo.</p>
+        </section>
+
+        <section id="suggestions" class="reveal">
+            <h2>¿Por qué se produce?</h2>
+            <p> Diversos factores culturales, económicos y sociales contribuyen a perpetuarla. Las actitudes tradicionales sobre el rol de los géneros y las desigualdades de poder son algunos de los factores que alimentan este problema. Sin embargo, el marco legal e institucional también juega un papel clave, ya que la falta de leyes protectoras o de mecanismos de apoyo efectivos pueden exacerbar la vulnerabilidad de las víctimas.</p>
+        </section>
+
+        <section id="test" class="reveal">
+            <h2>Como combatirla</h2>
+            <p>Combatir la violencia requiere educación, respeto y empatía desde temprana edad. Es fundamental promover la comunicación en la familia, enseñar a resolver conflictos de forma pacífica y realizar campañas de concientización. Además, se necesita apoyo psicológico y participación activa de la sociedad y las instituciones.</p>
+        </section>
+
+        <div class="dropdown-container reveal">
+            <button class="dropdown-button" onclick="toggleDropdown()">Ver Mapa y clasificacion de violencia en  Chimalhuacán</button>
+
+            <div class="dropdown-content" id="chimalhuacanDropdown">
+                <h2>Mapa de Chimalhuacán</h2>
+                <p>Ubica Chimalhuacán y observa la zona.</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15047.801646294723!2d-98.96695285!3d19.43126785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1cd7c3b9b41a9%3A0x6b8c9d0a6c6d0c4!2sChimalhuac%C3%A1n%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+                <h2>Clasificación de Colonias Más Afectadas</h2>
+                <p>Basado en datos de violencia de género en Chimalhuacán.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N.º</th>
+                            <th>Colonia</th>
+                            <th>Tipo de Violencia Predominante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Acuitlapilco Segunda Sección</td><td>Feminicidios, violencia familiar</td></tr>
+                        <tr><td>2</td><td>San Lorenzo</td><td>Violencia de género, inseguridad</td></tr>
+                        <tr><td>3</td><td>Villa San Agustín Atlapulco</td><td>Violencia contra mujeres, feminicidios</td></tr>
+                        <tr><td>4</td><td>Villa Xochitenco</td><td>Violencia familiar, agresiones sexuales</td></tr>
+                        <tr><td>5</td><td>Fundidores</td><td>Violencia de género, inseguridad</td></tr>
+                        <tr><td>6</td><td>Jardines de Acuitlapilco</td><td>Violencia de género, inseguridad</td></tr>
+                        <tr><td>7</td><td>Santa María Nativitas</td><td>Alto índice delictivo</td></tr>
+                        <tr><td>8</td><td>Tejedores</td><td>Violencia de género</td></tr>
+                        <tr><td>9</td><td>Plateros</td><td>Inseguridad, violencia familiar</td></tr>
+                        <tr><td>10</td><td>Talabartero</td><td>Violencia de género</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Estadísticas de Violencia</h2>
+                <p>Datos representativos sobre casos de violencia en colonias seleccionadas.</p>
+                
+            </div>
+        </div>
+    </main>
+
+    <a href="https://www.gob.mx/telefonorosavictimas" target="_blank" class="btn-ayuda">¿Necesitas ayuda?</a>
+
+    <a href="#" class="btn-top">↑</a>
+
+    <script src="script.js"></script>
+    <section id="types" class="reveal">
+        <h2>¿En chimalhuacan?</h2>
+        <p>Violencia de Género en Chimalhuacán: Un Panorama Preocupante
+            La situación de la violencia de género en Chimalhuacán es alarmante, marcada por la persistencia de alertas de género, una alta incidencia delictiva contra mujeres y una creciente presión social y crítica institucional.
+            <br>
+            Alerta de Violencia de Género y Desapariciones
+            Desde 2015, Chimalhuacán está bajo una Alerta de Violencia de Género por feminicidio. A esto se sumó, a partir de 2019, una alerta adicional por la desaparición de niñas y mujeres. Estas declaratorias reflejan la gravedad y continuidad de la problemática en el municipio.
+            <br>
+            Alta Incidencia de Delitos contra Mujeres
+            Los datos correspondientes de enero a septiembre de 2022 revelan cifras preocupantes:
+            <br>
+            Se registraron 694 casos de violencia familiar, lo que equivale a aproximadamente tres denuncias diarias.
+            Hubo 122 denuncias por violación, con un promedio de unas cuatro por semana.
+            Se reportaron 110 desapariciones de mujeres.
+            En el mismo periodo, se confirmaron dos feminicidios.
+            Además, según datos del INEGI, el 32.5% de las mujeres mayores de 18 años en Chimalhuacán afirma haber sufrido acoso o violencia sexual en espacios públicos, una cifra que supera la media nacional y subraya la vulnerabilidad de las mujeres en entornos cotidianos.
+            <br>
+            Presión Institucional y Crítica Ciudadana
+            Organizaciones locales y el Movimiento Antorchista nacional han alzado la voz, señalando que Chimalhuacán se encuentra entre los municipios con la mayor cantidad de feminicidios en el país. Estas voces alertan sobre un preocupante incremento del 150% en los homicidios contra mujeres durante el primer semestre (periodo y año no especificado en la fuente original), lo que intensifica la demanda de acciones contundentes por parte de las autoridades.</p>
+    </section>
+</body>
+</html>

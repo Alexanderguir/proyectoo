@@ -1,0 +1,369 @@
+/* Importa las fuentes de Google Fonts */
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap");
+
+/* Reset básico de CSS para eliminar márgenes y paddings por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total del elemento */
+    font-family: "Montserrat Alternates", sans-serif; /* Establece la fuente por defecto */
+}
+
+/* Estilos para el cuerpo de la página */
+body {
+    background-image: url("imagenes/fondo.jpg"); /* Imagen de fondo */
+    background-attachment: fixed; /* Fija la imagen de fondo al hacer scroll */
+    background-size: cover; /* Cubre toda el área del cuerpo */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+    color: #f0f0f0; /* Color de texto principal */
+    line-height: 1.6; /* Espaciado entre líneas para mejor lectura */
+}
+
+/* Estilos para los encabezados H2 */
+h2 {
+    color: #ffdb58; /* Color amarillo para los encabezados */
+    text-align: center; /* Centra el texto de los encabezados */
+    margin-bottom: 20px; /* Margen inferior para separar del contenido */
+}
+
+/* Estilos para los párrafos */
+p {
+    color: #e0e0e0; /* Color gris claro para los párrafos */
+    text-align: justify; /* Justifica el texto de los párrafos */
+    margin-bottom: 15px; /* Margen inferior para separar párrafos */
+}
+
+/* Capa oscura que se superpone al fondo para mejorar la legibilidad */
+.capa {
+    position: fixed; /* Fija la capa en la ventana de visualización */
+    width: 100%; /* Ancho completo */
+    height: 100vh; /* Altura completa de la ventana */
+    background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente negro */
+    z-index: -1; /* Envía la capa detrás del contenido */
+    top: 0; /* Alinea la capa en la parte superior */
+    left: 0; /* Alinea la capa a la izquierda */
+}
+
+/* --- Estilos para el encabezado principal de la página --- */
+.header {
+    width: 100%; /* Ancho completo */
+    height: 100px; /* Altura fija */
+    position: fixed; /* Fija el encabezado en la parte superior */
+    top: 0; /* Alinea el encabezado en la parte superior */
+    left: 0; /* Alinea el encabezado a la izquierda */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para el encabezado */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil */
+    z-index: 100; /* Asegura que el encabezado esté por encima de otros elementos */
+}
+
+/* Contenedor principal para centrar el contenido */
+.container {
+    width: 90%; /* Ancho del 90% */
+    max-width: 1200px; /* Ancho máximo de 1200px */
+    margin: auto; /* Centra el contenedor horizontalmente */
+    display: flex; /* Utiliza flexbox para alinear elementos */
+    justify-content: space-between; /* Espacia los elementos uniformemente */
+    align-items: center; /* Alinea los elementos verticalmente al centro */
+    height: 100px; /* Altura igual a la del encabezado */
+}
+
+/* Estilos para el botón de menú (hamburguesa) y el logo */
+.container .btn-menu label {
+    color: #fff; /* Color blanco */
+    font-size: 25px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar por encima */
+}
+
+/* Estilos para el logo de la página */
+.logo h1 {
+    color: #fff; /* Color blanco */
+    font-weight: 700; /* Negrita */
+    font-size: 24px; /* Tamaño de fuente */
+    margin-left: 10px; /* Margen izquierdo */
+}
+
+
+/* Estilos para los enlaces del menú */
+.container .menu a {
+    display: inline-block; /* Permite aplicar padding y margin */
+    padding: 15px; /* Relleno interno */
+    line-height: normal; /* Altura de línea normal */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #fff; /* Color blanco */
+    transition: all 0.3s ease; /* Transición suave para efectos hover */
+    border-bottom: 2px solid transparent; /* Borde inferior transparente */
+    font-size: 15px; /* Tamaño de fuente */
+    margin-right: 10px; /* Margen derecho entre enlaces */
+}
+
+/* Efecto hover para los enlaces del menú */
+.container .menu a:hover {
+    border-bottom: 2px solid #c7c7c7; /* Muestra el borde inferior al pasar el ratón */
+    padding-bottom: 5px; /* Pequeño ajuste de padding */
+}
+
+/* Clase 'active' para el enlace de menú actual */
+.menu a.active {
+    color: #ffdb58; /* Color amarillo para el enlace activo */
+    border-bottom: 2px solid #ffdb58; /* Borde inferior amarillo para el enlace activo */
+}
+/* --- Fin de Estilos para el encabezado --- */
+
+/* --- Menú lateral (hamburguesa) --- */
+/* Oculta el checkbox que controla la visibilidad del menú lateral */
+#btn-menu {
+    display: none;
+}
+
+/* Contenedor del menú lateral, inicialmente oculto */
+.container-menu {
+    position: fixed; /* Fijo en la ventana */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente oscuro */
+    width: 100%; /* Ancho completo */
+    height: 100vh; /* Altura completa de la ventana */
+    top: 0; /* Alineado en la parte superior */
+    left: 0; /* Alineado a la izquierda */
+    transition: all 500ms ease; /* Transición suave para la aparición/desaparición */
+    opacity: 0; /* Inicialmente transparente */
+    visibility: hidden; /* Inicialmente oculto a la interacción */
+    z-index: 150; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Muestra el contenedor del menú lateral cuando el checkbox está marcado */
+#btn-menu:checked ~ .container-menu {
+    opacity: 1; /* Hace el contenedor visible */
+    visibility: visible; /* Permite la interacción */
+}
+
+/* Contenido real del menú lateral */
+.cont-menu {
+    width: 100%; /* Ancho completo */
+    max-width: 250px; /* Ancho máximo del menú */
+    background: #1c1c1c; /* Color de fondo oscuro */
+    height: 100vh; /* Altura completa de la ventana */
+    position: relative; /* Posicionamiento relativo para elementos internos */
+    transition: all 500ms ease; /* Transición suave para el desplazamiento */
+    transform: translateX(-100%); /* Inicialmente fuera de la pantalla a la izquierda */
+}
+
+/* Desplaza el menú lateral a la vista cuando el checkbox está marcado */
+#btn-menu:checked ~ .container-menu .cont-menu {
+    transform: translateX(0%); /* Mueve el menú a su posición visible */
+}
+
+/* Ajusta la posición vertical de la navegación dentro del menú lateral */
+.cont-menu nav {
+    transform: translateY(15%); /* Desplaza el contenido hacia abajo */
+}
+
+/* Estilos para los enlaces dentro del menú lateral */
+.cont-menu nav a {
+    display: block; /* Cada enlace ocupa su propia línea */
+    text-decoration: none; /* Elimina el subrayado */
+    padding: 20px; /* Relleno interno */
+    color: #c7c7c7; /* Color de texto gris claro */
+    border-left: 5px solid transparent; /* Borde izquierdo transparente */
+    transition: all 400ms ease; /* Transición suave para efectos hover */
+}
+
+/* Efecto hover para los enlaces del menú lateral */
+.cont-menu nav a:hover {
+    border-left: 5px solid #c7c7c7; /* Muestra el borde izquierdo al pasar el ratón */
+    background: #1f1f1f; /* Cambia el color de fondo */
+}
+
+/* Clase 'active' para el enlace de menú lateral actual */
+.cont-menu nav a.active {
+    color: #ffdb58; /* Color amarillo para el enlace activo */
+    border-left: 5px solid #ffdb58; /* Borde izquierdo amarillo para el enlace activo */
+    background: #1f1f1f; /* Fondo ligeramente oscuro */
+}
+
+/* Estilos para el botón de cerrar (X) del menú lateral */
+.cont-menu label {
+    position: absolute; /* Posicionamiento absoluto dentro del menú */
+    right: 15px; /* A 15px del borde derecho */
+    top: 15px; /* A 15px del borde superior */
+    color: #fff; /* Color blanco */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    font-size: 22px; /* Tamaño de fuente */
+}
+/* --- Fin de Menú lateral --- */
+
+/* --- Estilos para el contenido principal --- */
+main {
+    padding-top: 150px; /* Espacio para el encabezado fijo */
+    padding-bottom: 50px; /* Espacio para el botón de ayuda */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenido principal */
+}
+
+section {
+    margin-bottom: 60px; /* Margen inferior entre secciones */
+    padding: 40px; /* Relleno interno de las secciones */
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo suave y semi-transparente */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+}
+
+/* Estilos para el botón de ayuda flotante */
+.btn-ayuda {
+    position: fixed; /* Fijo en la ventana */
+    bottom: 30px; /* A 30px del borde inferior */
+    right: 30px; /* A 30px del borde derecho */
+    background: #e74c3c; /* Color de fondo rojo */
+    color: white; /* Color de texto blanco */
+    padding: 15px 20px; /* Relleno interno */
+    border-radius: 50px; /* Muy redondeado para parecer una pastilla */
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /* Negrita */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra sutil */
+    transition: 0.3s; /* Transición suave para el efecto hover */
+    z-index: 90; /* Asegura que esté por encima de la mayoría de los elementos */
+}
+
+/* Efecto hover para el botón de ayuda */
+.btn-ayuda:hover {
+    background: #c0392b; /* Oscurece el rojo al pasar el ratón */
+    transform: translateY(-2px); /* Pequeño desplazamiento hacia arriba */
+}
+
+/* Estilos para el botón de "volver arriba" */
+.btn-top {
+    position: fixed; /* Fijo en la ventana */
+    bottom: 90px; /* A 90px del borde inferior (debajo del btn-ayuda) */
+    right: 30px; /* A 30px del borde derecho */
+    background: #3498db; /* Color de fondo azul */
+    color: white; /* Color de texto blanco */
+    padding: 10px 15px; /* Relleno interno */
+    border-radius: 50%; /* Completamente redondo */
+    text-decoration: none; /* Elimina el subrayado */
+    font-size: 18px; /* Tamaño de fuente */
+    display: none; /* Inicialmente oculto */
+    z-index: 90; /* Asegura que esté por encima de la mayoría de los elementos */
+    transition: 0.3s; /* Transición suave */
+}
+
+/* Efecto hover para el botón de "volver arriba" */
+.btn-top:hover {
+    background: #2980b9; /* Oscurece el azul al pasar el ratón */
+    transform: translateY(-2px); /* Pequeño desplazamiento hacia arriba */
+}
+
+/* Clases para la animación de revelado al hacer scroll */
+.reveal {
+    opacity: 0; /* Inicialmente transparente */
+    transform: translateY(50px); /* Desplazado 50px hacia abajo */
+    transition: 1s ease-out; /* Transición suave de 1 segundo */
+}
+
+/* Estado activo de la animación de revelado */
+.reveal.active {
+    opacity: 1; /* Completamente visible */
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+/* Estilos para las tablas */
+table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsa los bordes de la tabla */
+    margin-top: 20px; /* Margen superior */
+    border-radius: 10px; /* Bordes redondeados para la tabla */
+    overflow: hidden; /* Oculta el contenido que sobresalga de los bordes redondeados */
+}
+
+/* Estilos para las celdas de encabezado y datos de la tabla */
+th, td {
+    padding: 12px; /* Relleno interno */
+    text-align: center; /* Centra el texto */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+    color: #fff; /* Color de texto blanco */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
+}
+
+/* Estilos específicos para los encabezados de la tabla */
+th {
+    background-color: #e74c3c; /* Color de fondo rojo para los encabezados */
+    font-weight: bold; /* Negrita */
+}
+
+/* Estilos para filas pares de la tabla (rayas alternas) */
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo más claro para filas pares */
+}
+
+/* Contenedor para el contenido desplegable */
+.dropdown-container {
+    text-align: center; /* Centra el botón */
+    margin-top: 40px; /* Margen superior */
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Estilos para el botón desplegable */
+.dropdown-button {
+    background-color: #3498db; /* Color azul */
+    color: white; /* Texto blanco */
+    padding: 15px 30px; /* Relleno */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+    font-size: 1.1em; /* Tamaño de fuente */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+.dropdown-button:hover {
+    background-color: #2980b9; /* Oscurece al pasar el ratón */
+    transform: translateY(-2px); /* Pequeño desplazamiento hacia arriba */
+}
+
+/* Contenido oculto del desplegable */
+.dropdown-content {
+    display: none; /* Inicialmente oculto */
+    margin-top: 20px; /* Margen superior */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semi-transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Sombra interna */
+    overflow: hidden; /* Asegura que el contenido respete los bordes */
+}
+
+/* Ajustes para los elementos dentro del desplegable */
+.dropdown-content h2 {
+    margin-bottom: 20px;
+}
+
+.dropdown-content iframe {
+    display: block; /* Asegura que el iframe se comporte como bloque */
+    margin: 20px auto; /* Centra el iframe y añade margen */
+    border-radius: 8px; /* Bordes redondeados para el mapa */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Sombra para el mapa */
+}
+
+.dropdown-content table {
+    margin-top: 30px; /* Margen superior para la tabla */
+}
+
+.dropdown-content canvas {
+    max-width: 800px; /* Ancho máximo para la gráfica */
+    margin: 30px auto 0 auto; /* Centra la gráfica y añade margen */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo claro para la gráfica */
+    padding: 20px; /* Relleno alrededor de la gráfica */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Sombra */
+}
+
+/* Asegurarse de que el texto de bienvenida no afecte la navegación */
+.welcome-section {
+    margin-bottom: 60px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center; /* Centra el texto de bienvenida */
+}

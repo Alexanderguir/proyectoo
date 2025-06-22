@@ -1,0 +1,294 @@
+
+* {
+    margin: 0;
+    /* Elimina el margen exterior predeterminado de todos los elementos, reseteando los estilos del navegador. */
+    padding: 0;
+    /* Elimina el relleno interior predeterminado de todos los elementos, reseteando los estilos del navegador. */
+    box-sizing: border-box;
+    /* Establece el modelo de caja a 'border-box'. Esto significa que el padding y el border se incluyen en el ancho y alto total de un elemento, simplificando los cálculos de diseño. */
+    font-family: "Quicksand", sans-serif;
+    /* Define la fuente de texto principal. Intentará usar "Quicksand" y, si no está disponible, usará una fuente genérica sans-serif. */
+}
+
+/* Estilos para el cuerpo del documento HTML. */
+body {
+    display: flex;
+    /* Habilita Flexbox para el body, permitiendo un control flexible sobre la alineación de sus hijos. */
+    justify-content: center;
+    /* Centra horizontalmente los elementos hijos del body (en este caso, la <section>). */
+    align-items: center;
+    /* Centra verticalmente los elementos hijos del body. */
+    min-height: 100vh;
+    /* Asegura que el cuerpo ocupe al menos el 100% de la altura del viewport (la ventana visible del navegador). */
+    background: #000;
+    /* Establece un color de fondo negro sólido para el body. */
+}
+
+/* Estilos para la sección principal que contendrá el efecto de fondo y el formulario. */
+section {
+    position: absolute;
+    /* Posiciona la sección de forma absoluta con respecto al viewport (debido al 'body' con 'min-height: 100vh' y centrado). */
+    width: 100vw;
+    /* Establece el ancho de la sección al 100% del ancho del viewport. */
+    height: 100vh;
+    /* Establece la altura de la sección al 100% de la altura del viewport. */
+    display: flex;
+    /* Habilita Flexbox para la sección. */
+    justify-content: center;
+    /* Centra los elementos hijos (los <span>) horizontalmente. */
+    align-items: center;
+    /* Centra los elementos hijos (los <span>) verticalmente. */
+    gap: 2px;
+    /* Añade un espacio (brecha) de 2 píxeles entre los elementos hijos (<span>). */
+    flex-wrap: wrap;
+    /* Permite que los elementos hijos se envuelvan a la siguiente línea si no caben en una sola fila. */
+    overflow: hidden;
+    /* Oculta cualquier contenido que se desborde de los límites de la sección. */
+}
+
+/* Crea un pseudoelemento '::before' para la <section>, usado para el efecto de degradado animado. */
+section::before {
+    content: '';
+    /* Es necesario para que un pseudoelemento se genere. Se deja vacío ya que no es texto. */
+    position: absolute;
+    /* Posiciona el pseudoelemento de forma absoluta dentro de la <section>. */
+    width: 100%;
+    /* Ocupa el 100% del ancho de su padre (<section>). */
+    height: 100%;
+    /* Ocupa el 100% de la altura de su padre. */
+    background: linear-gradient(90deg, rgba(85,85,208,1)29%, rgba(187,109,235,1)70%);
+    /* Crea un degradado lineal como fondo: empieza con un azul (#5555D0) y transiciona a un morado (#BB6DEB) hacia la derecha. */
+    animation: animate 5s linear infinite;
+    /* Aplica una animación llamada 'animate' que dura 5 segundos, es lineal (velocidad constante) y se repite infinitamente. */
+}
+
+/* Definición de la animación 'animate' (para el degradado del pseudoelemento). */
+@keyframes animate {
+    0% {
+        transform: translateY(-100%);
+        /* Al inicio de la animación, mueve el elemento 100% de su altura hacia arriba (fuera de la vista). */
+    }
+    100% {
+        transform: translateY(100%);
+        /* Al final de la animación, mueve el elemento 100% de su altura hacia abajo (fuera de la vista). Esto crea un efecto de "barrido" vertical continuo. */
+    }
+}
+
+/* Estilos para los elementos <span> dentro de la <section>, que forman la cuadrícula de fondo. */
+section span {
+    position: relative;
+    /* Establece la posición relativa para que los elementos internos (si los hubiera) puedan ser posicionados de forma absoluta dentro de cada span. */
+    display: block;
+    /* Hace que los <span> se comporten como elementos de bloque. */
+    width: calc(6.25vw - 2px);
+    /* Calcula el ancho de cada <span>: 6.25% del ancho del viewport menos 2 píxeles (para el 'gap' entre ellos). Esto crea 16 columnas (100 / 6.25 = 16). */
+    height: calc(6.25vw - 2px);
+    /* Calcula la altura de cada <span> para que sean cuadrados, también restando 2 píxeles para el 'gap'. */
+    background: #181818;
+    /* Establece un color de fondo gris oscuro para cada <span>. */
+    z-index: 2;
+    /* Define el orden de apilamiento. Estos <span>s estarán por encima del pseudoelemento '::before' (z-index: 1). */
+    transition: 1.5s;
+    /* Aplica una transición de 1.5 segundos a todas las propiedades que cambien, para un efecto de cambio de color suave. */
+}
+
+/* Estilos para los <span> cuando el cursor del ratón está sobre ellos. */
+section span:hover {
+    background: #BB6DEB;
+    /* Cambia el color de fondo a un morado más claro al pasar el ratón. */
+    transition: 0s;
+    /* Anula la transición para el efecto hover, haciendo que el cambio de color sea instantáneo al entrar el ratón. */
+}
+
+/* Estilos para el contenedor del formulario de inicio de sesión. */
+section .signin {
+    position: absolute;
+    /* Posiciona el formulario de forma absoluta dentro de la <section>. */
+    width: 400px;
+    /* Establece un ancho fijo de 400 píxeles para el formulario. */
+    background: #222;
+    /* Define un color de fondo gris muy oscuro para el formulario. */
+    z-index: 1000;
+    /* Coloca el formulario muy por encima de los <span>s y el degradado de fondo para que sea visible. */
+    justify-content: center;
+    /* (Este 'justify-content' está en un 'div' sin 'display: flex' o 'grid', por lo que no tendrá efecto directo aquí a menos que se cambie el 'display'). */
+    align-items: center;
+    /* (Este 'align-items' está en un 'div' sin 'display: flex' o 'grid', por lo que no tendrá efecto directo aquí a menos que se cambie el 'display'). */
+    padding: 40px;
+    /* Añade un relleno de 40 píxeles dentro del formulario. */
+    border-radius: 4px;
+    /* Redondea las esquinas del formulario. */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.9);
+    /* Agrega una sombra pronunciada al formulario, dándole un efecto de elevación. */
+}
+
+/* Estilos para el contenedor del contenido dentro del formulario de inicio de sesión. */
+section .signin .content {
+    position: relative;
+    /* Establece la posición relativa para posicionar elementos internos de forma absoluta si es necesario. */
+    width: 100%;
+    /* Ocupa el 100% del ancho de su padre (el formulario). */
+    display: flex;
+    /* Habilita Flexbox. */
+    justify-content: center;
+    /* Centra horizontalmente los elementos hijos. */
+    align-items: center;
+    /* Centra verticalmente los elementos hijos. */
+    flex-direction: column;
+    /* Apila los elementos hijos en una columna vertical. */
+    gap: 40px;
+    /* Añade una brecha de 40 píxeles entre los elementos hijos. */
+}
+
+/* Estilos para el encabezado de nivel 2 dentro del contenido del formulario. */
+section .signin .content h2 {
+    font-size: 2em;
+    /* Establece el tamaño de fuente a 2 veces el tamaño de fuente del padre. */
+    color: #5555D0;
+    /* Define un color azul para el encabezado. */
+    text-transform: uppercase;
+    /* Convierte todo el texto a mayúsculas. */
+}
+
+/* Estilos para el contenedor del formulario. */
+section .signin .content .form {
+    width: 100%;
+    /* Ocupa el 100% del ancho de su padre. */
+    display: flex;
+    /* Habilita Flexbox. */
+    flex-direction: column;
+    /* Apila los elementos hijos (cajas de entrada) en una columna. */
+    gap: 25px;
+    /* Añade una brecha de 25 píxeles entre los elementos hijos. */
+}
+
+/* Estilos para cada caja de entrada individual dentro del formulario. */
+section .signin .content .form .input-box {
+    position: relative;
+    /* Establece la posición relativa para permitir el posicionamiento absoluto de elementos internos (como el icono 'i'). */
+    width: 100%;
+    /* Ocupa el 100% del ancho de su padre. */
+}
+
+/* Estilos para el campo de entrada real dentro de una caja de entrada. */
+section .signin .content .form .input-box input {
+    position: relative;
+    /* Posición relativa (no estrictamente necesaria aquí si no hay otros elementos que la afecten). */
+    width: 100%;
+    /* Ocupa el 100% del ancho de su padre. */
+    background: #333;
+    /* Establece un color de fondo gris oscuro para el campo de entrada. */
+    border: none;
+    /* Elimina cualquier borde predeterminado del campo de entrada. */
+    padding: 25px 10px 7.5px;
+    /* Establece un relleno asimétrico para el efecto de etiqueta flotante: 25px arriba, 10px izquierda/derecha, 7.5px abajo. */
+    border-radius: 4px;
+    /* Redondea las esquinas del campo de entrada. */
+    color: #FFF;
+    /* Define el color del texto de entrada como blanco. */
+    font-weight: 500;
+    /* Establece el grosor de la fuente. */
+    font-size: 1em;
+    /* Establece el tamaño de la fuente al tamaño por defecto. */
+}
+
+/* Estilos para el icono (etiqueta o placeholder) dentro de la caja de entrada. */
+section .signin .content .form .input-box i {
+    position: absolute;
+    /* Posiciona el icono de forma absoluta dentro de su padre '.input-box'. */
+    left: 10px;
+    /* Lo posiciona a 10 píxeles del borde izquierdo. */
+    top: 50%;
+    /* Lo posiciona a la mitad de la altura del '.input-box'. */
+    transform: translateY(-50%);
+    /* Ajusta verticalmente el icono para centrarlo perfectamente (mueve hacia arriba la mitad de su propia altura). */
+    color: #aaa;
+    /* Establece un color gris claro para el icono/placeholder. */
+    transition: 0.5s;
+    /* Aplica una transición suave de 0.5 segundos para las propiedades que cambien (como 'top' y 'font-size'). */
+    pointer-events: none;
+    /* Hace que el icono no sea interactuable con el ratón, permitiendo clics "a través" de él para interactuar con el input. */
+}
+
+/* Estilos para el icono cuando el campo de entrada está en foco o tiene contenido válido. */
+section .signin .content .form .input-box input:focus ~ i,
+/* Aplica estos estilos al icono 'i' que sea un hermano posterior del input cuando el input está en foco. */
+section .signin .content .form .input-box input:valid ~ i {
+    /* O aplica estos estilos al icono 'i' que sea un hermano posterior del input cuando el input tiene contenido válido (si el input tiene la propiedad 'required'). */
+    top: 10px;
+    /* Mueve el icono hacia arriba (a 10 píxeles de la parte superior del input-box). */
+    font-size: 0.75em;
+    /* Reduce el tamaño de la fuente del icono. */
+    color: #FFF;
+    /* Cambia el color del icono a blanco. */
+}
+
+/* Estilos para el contenedor de enlaces (¿recordar contraseña, registrarse?). */
+section .signin .content .form .links {
+    position: relative;
+    /* Posición relativa (no estrictamente necesaria aquí si no hay otros elementos que la afecten). */
+    width: 100%;
+    /* Ocupa el 100% del ancho de su padre. */
+    display: flex;
+    /* Habilita Flexbox. */
+    justify-content: space-between;
+    /* Distribuye los elementos hijos con espacio entre ellos, el primero al inicio y el último al final. */
+}
+
+/* Estilos para los enlaces dentro del contenedor 'links'. */
+section .signin .content .form .links a {
+    color: #FFF;
+    /* Define el color del texto de los enlaces como blanco. */
+    text-decoration: none;
+    /* Elimina el subrayado predeterminado de los enlaces. */
+}
+
+/* Estilos para el botón de envío (submit) del formulario. */
+section .signin .content .form .input-box input[type="submit"] {
+    padding: 10px;
+    /* Añade un relleno de 10 píxeles alrededor del texto del botón. */
+    background: #5555D0;
+    /* Define el color de fondo del botón como azul. */
+    color: #000;
+    /* Define el color del texto del botón como negro. */
+    font-weight: 600;
+    /* Establece el grosor de la fuente a 600 (semi-negrita). */
+    font-size: 1.35em;
+    /* Aumenta el tamaño de la fuente del botón. */
+    letter-spacing: 0.05em;
+    /* Añade un pequeño espacio entre las letras. */
+    cursor: pointer;
+    /* Cambia el cursor a una mano (puntero) cuando se pasa sobre el botón, indicando que es clicable. */
+}
+
+/* Estilos para el botón de envío cuando el cursor del ratón está sobre él. */
+section .signin .content .form .input-box input[type="submit"]:hover {
+    background: #BB6DEB;
+    /* Cambia el color de fondo a morado al pasar el ratón. */
+}
+
+/* Estilos para cualquier botón de envío cuando se está haciendo clic en él. */
+input[type="submit"]:active {
+    opacity: 0.6;
+    /* Reduce la opacidad del botón al 60% cuando está siendo clicado, creando un efecto visual de "presionado". */
+}
+
+/* Media Query para pantallas con un ancho máximo de 900 píxeles. */
+@media(max-width: 900px) {
+    section span {
+        width: calc(10vw - 2px);
+        /* Redefine el ancho de los <span> a 10% del ancho del viewport menos 2 píxeles, para crear más columnas en pantallas medianas (100 / 10 = 10 columnas). */
+        height: calc(10vw - 2px);
+        /* Mantiene la proporción cuadrada de los <span>. */
+    }
+}
+
+/* Media Query para pantallas con un ancho máximo de 600 píxeles. */
+@media(max-width: 600px) {
+    section span {
+        width: calc(20vw - 2px);
+        /* Redefine el ancho de los <span> a 20% del ancho del viewport menos 2 píxeles, para crear aún más columnas en pantallas pequeñas (100 / 20 = 5 columnas). */
+        height: calc(20vw - 2px);
+        /* Mantiene la proporción cuadrada de los <span>. */
+    }
+}

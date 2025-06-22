@@ -1,0 +1,76 @@
+body {
+  /* Selecciona el elemento <body>, que representa el contenido visible de toda la página HTML. */
+  font-family: Arial, sans-serif;
+  /* Establece la fuente principal del texto para todo el cuerpo del documento. Usa 'Arial' como primera opción y, si no está disponible, cualquier fuente sans-serif genérica. */
+  background-color: #f9f0ff;
+  /* Define el color de fondo de la página. El código hexadecimal #f9f0ff es un tono muy claro de morado o lila. */
+  text-align: center;
+  /* Centra horizontalmente todo el contenido de texto y los elementos en línea dentro del <body>. */
+  padding: 20px;
+  /* Agrega un relleno (espacio interno) de 20 píxeles alrededor de todo el contenido del <body>. Esto crea un margen interno entre el contenido y los bordes de la ventana del navegador. */
+}
+
+h1,
+h2 {
+  /* Selecciona todos los elementos de encabezado <h1> y <h2> en la página. */
+  color: #660066;
+  /* Establece el color del texto de estos encabezados a un tono de morado oscuro usando el código hexadecimal #660066. */
+}
+
+ul {
+  /* Selecciona todas las listas desordenadas (unordered lists) <ul>. */
+  list-style: none;
+  /* Elimina los marcadores de lista predeterminados (como puntos o cuadrados) que aparecen junto a los elementos de la lista. */
+  padding: 0;
+  /* Elimina el relleno predeterminado de las listas, que a menudo las indenta desde el borde izquierdo. */
+}
+
+li {
+  /* Selecciona todos los elementos de lista (list items) <li>. */
+  margin: 10px 0;
+  /* Agrega un margen de 10 píxeles arriba y abajo de cada elemento de la lista, y 0 píxeles a la izquierda y derecha. Esto crea espacio vertical entre los ítems. */
+}
+
+a {
+  /* Selecciona todos los enlaces (hyperlinks) <a>. */
+  text-decoration: none;
+  /* Elimina el subrayado predeterminado que tienen los enlaces. */
+  color: white;
+  /* Establece el color del texto del enlace a blanco. */
+  background-color: #9900cc;
+  /* Define el color de fondo del enlace a un tono de morado medio (#9900cc). */
+  padding: 10px 20px;
+  /* Agrega un relleno de 10 píxeles arriba y abajo, y 20 píxeles a la izquierda y derecha, dentro del área del enlace. Esto hace que el área cliqueable sea más grande y el enlace se vea como un botón. */
+  border-radius: 8px;
+  /* Redondea las esquinas del fondo del enlace con un radio de 8 píxeles, dándole una apariencia de botón suave. */
+}
+
+a:hover {
+  /* Selecciona los enlaces cuando el cursor del ratón está sobre ellos (estado 'hover'). */
+  background-color: #cc66ff;
+  /* Cambia el color de fondo del enlace a un tono más claro de morado (#cc66ff) cuando el usuario pasa el ratón por encima, proporcionando una retroalimentación visual. */
+}
+
+button {
+  /* Selecciona todos los elementos <button>. */
+  margin: 5px;
+  /* Agrega un margen de 5 píxeles alrededor de todos los botones, separándolos de otros elementos. */
+  padding: 8px 16px;
+  /* Agrega un relleno interno de 8 píxeles arriba y abajo, y 16 píxeles a la izquierda y derecha, dentro del botón. */
+  background: #bb33ff;
+  /* Establece el color de fondo del botón a un tono de morado vibrante (#bb33ff). */
+  color: white;
+  /* Establece el color del texto del botón a blanco. */
+  border: none;
+  /* Elimina cualquier borde predeterminado del botón. */
+  border-radius: 4px;
+  /* Redondea las esquinas del botón con un radio de 4 píxeles. */
+  cursor: pointer;
+  /* Cambia el cursor del ratón a una mano (puntero) cuando se pasa sobre el botón, indicando que es un elemento interactivo. */
+}
+
+button:hover {
+  /* Selecciona los botones cuando el cursor del ratón está sobre ellos (estado 'hover'). */
+  background: #9900cc;
+  /* Cambia el color de fondo del botón a un tono de morado más oscuro (#9900cc) cuando el usuario pasa el ratón por encima, proporcionando una retroalimentación visual. */
+}

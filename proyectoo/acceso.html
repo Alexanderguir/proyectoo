@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acceso Seguro</title>
+  <link rel="stylesheet" href="Untitled-1.css" />
+  <style>
+    /* Abre una etiqueta <style>, que permite incrustar código CSS directamente dentro del documento HTML. Esto es útil para estilos específicos de una página o para sobreescribir estilos de hojas externas. */
+
+    .formulario {
+      /* Selecciona el elemento con la clase 'formulario'. */
+      margin: 100px auto;
+      /* Establece un margen externo de 100 píxeles en la parte superior e inferior, y 'auto' para los lados izquierdo y derecho. 'auto' en los lados izquierdo/derecho, cuando se aplica a un elemento de bloque con un 'width' definido, lo centra horizontalmente en su contenedor. */
+      padding: 30px;
+      /* Agrega un relleno interno de 30 píxeles alrededor del contenido del formulario, creando espacio entre el contenido y los bordes del formulario. */
+      width: 300px;
+      /* Define un ancho fijo para el formulario de 300 píxeles. */
+      background: #fff;
+      /* Establece el color de fondo del formulario a blanco. */
+      border-radius: 10px;
+      /* Redondea las esquinas del formulario con un radio de 10 píxeles, dándole un aspecto más suave. */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* Añade una sombra sutil al formulario. La sombra es negra con un 10% de opacidad, sin desplazamiento y con un desenfoque de 10 píxeles, lo que le da un efecto de elevación. */
+    }
+
+    input {
+      /* Selecciona todos los elementos <input>. */
+      width: 100%;
+      /* Establece el ancho de todos los campos de entrada al 100% de su contenedor padre, haciéndolos ocupar todo el espacio disponible horizontalmente. */
+      margin-bottom: 15px;
+      /* Agrega un margen de 15 píxeles debajo de cada campo de entrada, separándolos verticalmente. */
+      padding: 10px;
+      /* Agrega un relleno interno de 10 píxeles dentro de cada campo de entrada, lo que hace que el texto se vea menos apretado y los campos más grandes. */
+    }
+
+    input[type="submit"] {
+      /* Selecciona específicamente los elementos <input> cuyo atributo 'type' es "submit" (botones de envío de formulario). */
+      background-color: #007BFF;
+      /* Define el color de fondo del botón de envío a un tono de azul. */
+      color: white;
+      /* Establece el color del texto del botón a blanco. */
+      border: none;
+      /* Elimina cualquier borde predeterminado del botón. */
+      cursor: pointer;
+      /* Cambia el cursor del ratón a una mano (puntero) cuando se pasa sobre el botón, indicando que es clicable. */
+    }
+
+    input[type="submit"]:hover {
+      /* Selecciona el botón de envío cuando el cursor del ratón está sobre él (estado 'hover'). */
+      background-color: #0056b3;
+      /* Cambia el color de fondo del botón a un azul más oscuro al pasar el ratón, proporcionando una retroalimentación visual de interactividad. */
+    }
+  </style>
+  </head>
+<body>
+  <div class="formulario">
+    <h2>Acceso de Edición</h2>
+    <form action="php/verificar_acceso.php" method="POST">
+      <input type="text" name="nombre_usuario" placeholder="Usuario" required>
+      <input type="password" name="contraseña" placeholder="Contraseña" required>
+      <input type="submit" value="Entrar al Panel">
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+/* Fuente desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+/* Reset general y fuente base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comic Neue', sans-serif;
+}
+
+/* Fondo del body con imagen */
+body {
+  background-image: url("imagenes/fondo.jpg");
+  background-attachment: fixed; /* La imagen se queda fija al hacer scroll */
+  background-size: cover;       /* Cubrir toda la pantalla */
+  background-position: center;  /* Centrar la imagen */
+  background-repeat: no-repeat; /* No repetir la imagen */
+}
+
+/* Navegación (barra superior) */
+.nav {
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.5);
+  text-align: left;
+}
+
+/* Botón de inicio */
+.inicio {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  border-radius: 5px;
+}
+
+.inicio:hover {
+  background-color: #0056b3;
+}
+
+/* Título principal */
+.titulo-principal {
+  text-align: center;
+  margin: 40px 0 20px 0;
+}
+
+.titulo-principal h1 {
+  font-size: 48px;
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* Contenedor de tarjetas con flexbox */
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;       /* Permite que bajen si no caben */
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* Estructura de cada tarjeta */
+.card {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  perspective: 1000px; /* Para el efecto 3D */
+}
+
+/* Ambas caras de la tarjeta */
+.card .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Oculta la cara trasera al frente */
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.5s;
+}
+
+/* Cara frontal */
+.card .front {
+  transform: rotateY(0deg);
+  box-shadow: 0 5px 10px #000;
+}
+
+/* Imagen dentro de la cara frontal */
+.card .front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Título en la parte baja de la imagen */
+.card .front h3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  line-height: 45px;
+  font-size: 20px;
+}
+
+/* Cara trasera */
+.card .back {
+  transform: rotateY(180deg);
+  background: rgb(3, 35, 54);
+  padding: 20px;
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0 5px 10px #000;
+}
+
+/* Línea superior del botón de enlace */
+.card .back .link {
+  border-top: solid 1px #f3f3f3;
+  height: 50px;
+  line-height: 50px;
+}
+
+/* Estilo del botón de enlace */
+.card .back .link a {
+  color: #f3f3f3;
+  text-decoration: none;
+}
+
+/* Título en la parte trasera */
+.card .back h3 {
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+/* Párrafo en la parte trasera */
+.card .back p {
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+/* Efecto de voltear la tarjeta al pasar el mouse */
+.card:hover .front {
+  transform: rotateY(180deg);
+}
+
+.card:hover .back {
+  transform: rotateY(360deg);
+}

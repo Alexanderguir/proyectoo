@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registro</title>
+    <a href="cecy.html">Inicio</a>
+    <link rel="icon" src="/" type="image/x-icon"> <!-- Icono de la pestaña del navegador -->
+    <style>
+        /* --- Estilo general del cuerpo de la página --- */
+        body {
+            margin: 0; /* Elimina márgenes predeterminados */
+            padding: 0; /* Elimina rellenos predeterminados */
+            font-family: Arial, sans-serif; /* Fuente limpia y legible */
+            background-image: url("imagenes/fondo.jpg");
+        }
+    
+    
+        /* --- Estilo al pasar el mouse sobre los enlaces --- */
+        .navbar a:hover {
+            background-color: #575757; /* Fondo más claro al hacer hover */
+            color: white; /* Asegura que el texto siga siendo legible */
+        }
+    
+        /* --- Contenedor principal que centra el formulario --- */
+        .signin {
+            display: flex; /* Usa Flexbox para centrar contenido */
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            height: calc(100vh - 60px); /* Altura completa menos barra de navegación */
+        }
+    
+        /* --- Caja blanca que contiene el formulario --- */
+        .content {
+            background-color: white; /* Fondo blanco para contraste */
+            padding: 30px; /* Espaciado interno */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor */
+            width: 350px; /* Ancho fijo del formulario */
+        }
+    
+        /* --- Título del formulario --- */
+        h2 {
+            text-align: center; /* Centrado horizontal */
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+    
+        /* --- Contenedor para cada campo de entrada --- */
+        .input-box {
+            margin-bottom: 15px; /* Espacio entre campos */
+        }
+    
+        /* --- Estilo de los campos de texto y contraseña --- */
+        .input-box input {
+            width: 100%; /* Que ocupe todo el ancho disponible */
+            padding: 10px; /* Espaciado interno del campo */
+            border: 1px solid #ccc; /* Borde gris claro */
+            border-radius: 4px; /* Bordes ligeramente redondeados */
+        }
+    
+        /* --- Contenedor para los enlaces adicionales --- */
+        .links {
+            display: flex; /* Flexbox para colocar enlaces lado a lado */
+            justify-content: space-between; /* Separación entre ellos */
+            margin-bottom: 15px; /* Espacio debajo de los enlaces */
+            font-size: 14px; /* Tamaño de letra más pequeño */
+        }
+    
+        /* --- Estilo para los enlaces "olvidaste" y "regístrate" --- */
+        .links a {
+            text-decoration: none; /* Quitar subrayado */
+            color: #007BFF; /* Azul estándar para enlaces */
+        }
+    
+        /* --- Efecto hover sobre los enlaces de abajo --- */
+        .links a:hover {
+            text-decoration: underline; /* Subraya al pasar el mouse */
+        }
+    
+        /* --- Estilo del botón "Iniciar Sesión" --- */
+        .input-box input[type="submit"] {
+            background-color: #007BFF; /* Azul fuerte para destacar */
+            color: white; /* Texto blanco */
+            border: none; /* Quitar borde predeterminado */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            transition: background-color 0.3s; /* Transición suave al cambiar color */
+        }
+    
+        /* --- Cambiar color del botón cuando se hace hover --- */
+        .input-box input[type="submit"]:hover {
+            background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+        }
+    </style>
+    <script>
+        function validarRegistro() {
+            var nombreUsuario = document.getElementById("nombre_usuario").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var contraseña = document.getElementById("contraseña").value;
+            var confirmarContraseña = document.getElementById("confirmar_contraseña").value;
+    
+            // Expresión regular para permitir solo letras (con acentos y espacios)
+            var soloLetras = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/;
+    
+            // Validar que todos los campos estén completos
+            if (nombreUsuario === "" || email === "" || contraseña === "" || confirmarContraseña === "") {
+                alert("Por favor, complete todos los campos.");
+                return false;
+            }
+    
+            // Validar que el nombre no contenga números ni símbolos
+            if (!soloLetras.test(nombreUsuario)) {
+                alert("El nombre de usuario no debe contener números ni caracteres especiales.");
+                return false;
+            }
+    
+            // Validar que las contraseñas coincidan
+            if (contraseña !== confirmarContraseña) {
+                alert("Las contraseñas no coinciden.");
+                return false;
+            }
+    
+            return true; // Todo válido, se puede enviar el formulario
+        }
+    
+        // Función para mostrar u ocultar contraseñas
+        function togglePassword(idCampo) {
+            var input = document.getElementById(idCampo);
+            input.type = input.type === "password" ? "text" : "password";
+        }
+    </script>
+    
+    
+    <center>
+    <div class="content">
+        <h2>Regístrate</h2> <!-- Título del formulario -->
+        <div class="form">
+            <form action="php/registro.php" method="POST" onsubmit="return validarRegistro()"> <!-- Formulario de registro con acción a PHP -->
+                <div class="input-box">
+                    <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Usuario" required> <!-- Campo de nombre de usuario -->
+                </div>
+                <div class="input-box">
+                    <input type="email" id="email" name="email" placeholder="Correo Electrónico" required> <!-- Campo de correo electrónico -->
+                </div>
+                <!-- Contraseña -->
+    <div class="input-box" style="position: relative;">
+        <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required>
+        <span class="toggle-password" onclick="togglePassword('contraseña')" style="position: absolute; right: 10px; top: 10px; cursor: pointer;">👁️</span>
+    </div>
+
+    <!-- Confirmar contraseña -->
+    <div class="input-box" style="position: relative;">
+        <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Confirmar Contraseña" required>
+        <span class="toggle-password" onclick="togglePassword('confirmar_contraseña')" style="position: absolute; right: 10px; top: 10px; cursor: pointer;">👁️</span>
+    </div>
+
+                <div class="input-box">
+                    <input type="submit" value="Registrarse"> <!-- Botón de envío del formulario -->
+                </div>
+            <!-- Enlaces adicionales -->
+<div class="links">
+    <a href="iniciores.html">¿Ya tienes cuenta? Iniciar sesión</a>
+</div>
+
+<!-- Botón alternativo para ir al acceso (opcional, puedes quitarlo si no lo quieres) -->
+<div class="input-box">
+    <a href="acceso.html">
+        <input type="button" value="Buscar cuenta">
+    </a>
+</div>
+<!-- Botón para ir a eliminar cuenta -->
+<div class="input-box">
+    <a href="eliminar_cuenta.html">
+        <input type="button" value="Eliminar cuenta">
+    </a>
+</div>
+
+            
+       </div>
+    </div>
+</div>
+</center>
+</section>
+</body>
+</html>

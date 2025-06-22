@@ -1,0 +1,321 @@
+/* Selector universal: aplica estilos a TODOS los elementos HTML. */
+* {
+  margin: 0;
+  /* Elimina el margen externo predeterminado de todos los elementos, asegurando un control total del espaciado. */
+  padding: 0;
+  /* Elimina el relleno interno predeterminado de todos los elementos, también para un control preciso del espaciado. */
+  box-sizing: border-box;
+  /* Cambia el modelo de caja predeterminado. Con 'border-box', el 'padding' y 'border' se incluyen DENTRO del 'width' y 'height' total del elemento. Esto facilita mucho el diseño y la alineación. */
+  font-family: 'Comic Neue', sans-serif;
+  /* Establece la fuente de texto por defecto para todos los elementos. Intenta usar 'Comic Neue' y si no está disponible, usará una fuente genérica 'sans-serif'. */
+}
+
+/* Fondo del body con imagen */
+/* Estilos aplicados al elemento <body>, que representa el contenido visible de toda la página web. */
+body {
+  background-image: url("imagenes/fondo.jpg");
+  /* Establece una imagen de fondo para todo el cuerpo de la página, cargando 'fondo.jpg' desde la carpeta 'imagenes'. */
+  background-attachment: fixed;
+  /* La imagen de fondo se mantiene fija en su posición relativa al viewport (la ventana visible del navegador); no se desplaza con el contenido de la página al hacer scroll. */
+  background-size: cover;
+  /* Escala la imagen de fondo para que cubra completamente el área del elemento (el body), manteniendo su proporción. Partes de la imagen pueden recortarse si las dimensiones no coinciden. */
+  background-position: center;
+  /* Centra la imagen de fondo horizontal y verticalmente dentro del elemento. */
+  background-repeat: no-repeat;
+  /* Evita que la imagen de fondo se repita (se muestre varias veces) si el elemento es más grande que la imagen. */
+}
+
+/* Navegación (barra superior) */
+/* Estilos para el elemento con la clase 'nav', que típicamente representa la barra de navegación principal. */
+.nav {
+  width: 100%;
+  /* Hace que la barra de navegación ocupe todo el ancho disponible de su elemento padre (normalmente el body). */
+  padding: 15px;
+  /* Añade un espacio de 15 píxeles alrededor del contenido interno de la barra de navegación. */
+  background-color: rgba(0,0,0,0.5);
+  /* Establece un color de fondo negro con un 50% de transparencia (opacidad) para la barra de navegación, permitiendo ver ligeramente el fondo detrás. */
+  text-align: left;
+  /* Alinea el texto (y el contenido en línea) a la izquierda dentro de la barra de navegación. */
+}
+
+/* Botón de inicio */
+/* Estilos para el elemento con la clase 'inicio', que probablemente es un botón o enlace "Inicio" dentro de la navegación. */
+.inicio {
+  color: white;
+  /* Establece el color del texto a blanco. */
+  text-decoration: none;
+  /* Elimina el subrayado predeterminado de los enlaces, dándole una apariencia más limpia. */
+  font-size: 18px;
+  /* Define el tamaño de la fuente en 18 píxeles. */
+  font-weight: bold;
+  /* Hace que el texto sea negrita. */
+  padding: 10px 20px;
+  /* Añade un relleno interno de 10px verticalmente (arriba y abajo) y 20px horizontalmente (izquierda y derecha), dando forma de botón. */
+  background-color: #007BFF;
+  /* Establece el color de fondo del botón a un azul vibrante. */
+  border-radius: 5px;
+  /* Redondea las esquinas del botón con un radio de 5 píxeles. */
+}
+
+.inicio:hover {
+  /* Estilos aplicados al botón '.inicio' cuando el cursor del ratón está sobre él (efecto hover). */
+  background-color: #0056b3;
+  /* Cambia el color de fondo a un azul más oscuro al pasar el ratón, proporcionando retroalimentación visual. */
+}
+
+/* Título principal */
+/* Estilos para el contenedor del título principal (por ejemplo, un div o section que envuelve el h1). */
+.titulo-principal {
+  text-align: center;
+  /* Centra el texto horizontalmente dentro de este contenedor. */
+  margin: 40px 0 20px 0;
+  /* Establece márgenes: 40px arriba, 0px a los lados (izquierda/derecha), 20px abajo. */
+}
+
+/* Estilos específicos para el h1 dentro de .titulo-principal */
+.titulo-principal h1 {
+  font-size: 48px;
+  /* Define un tamaño de fuente grande para el título principal. */
+  color: white;
+  /* Establece el color del texto del título a blanco. */
+  text-shadow: 2px 2px 4px #000;
+  /* Agrega una sombra al texto: 2px de desplazamiento horizontal, 2px vertical, 4px de desenfoque, y color negro, para mejorar la visibilidad sobre el fondo. */
+}
+
+/* Contenedor de tarjetas con flexbox */
+/* Estilos para el contenedor que organiza las tarjetas individuales usando Flexbox. */
+.contenedor {
+  display: flex;
+  /* Habilita Flexbox para organizar los elementos hijos (las tarjetas) en una fila o columna. */
+  flex-wrap: wrap;
+  /* Permite que los elementos hijos se envuelvan (pasen a la siguiente línea) si no hay suficiente espacio en una sola fila. */
+  justify-content: center;
+  /* Centra los elementos hijos horizontalmente dentro del contenedor cuando hay espacio. */
+  gap: 30px;
+  /* Define un espacio (brecha) de 30 píxeles entre los elementos hijos (tarjetas), tanto horizontal como verticalmente. */
+  padding: 20px;
+  /* Añade un relleno de 20 píxeles alrededor del contenido de este contenedor. */
+}
+
+/* Estructura de cada tarjeta */
+/* Estilos base para cada elemento con la clase 'card', que representa una tarjeta individual con efecto 3D. */
+.card {
+  position: relative;
+  /* Establece la posición relativa para permitir el posicionamiento absoluto de sus hijos (las caras frontal y trasera de la tarjeta). */
+  width: 300px;
+  /* Define un ancho fijo para cada tarjeta. */
+  height: 350px;
+  /* Define una altura fija para cada tarjeta. */
+  perspective: 1000px;
+  /* Establece la perspectiva para el efecto 3D de volteo. Un valor más alto significa menos perspectiva (la tarjeta parece más plana). */
+}
+
+/* Ambas caras de la tarjeta (frontal y trasera) */
+/* Estilos comunes aplicados a los elementos con la clase 'face' dentro de una '.card'. */
+.card .face {
+  position: absolute;
+  /* Posiciona la cara de forma absoluta dentro de su padre '.card', permitiendo que ambas caras ocupen el mismo espacio. */
+  width: 100%;
+  /* Ocupa el 100% del ancho de su padre. */
+  height: 100%;
+  /* Ocupa el 100% de la altura de su padre. */
+  backface-visibility: hidden;
+  /* Hace que la parte trasera del elemento (cuando está girada) sea invisible. Esto es CRUCIAL para el efecto de volteo 3D, ya que evita que se vea la cara trasera a través de la frontal. */
+  border-radius: 10px;
+  /* Redondea las esquinas de la cara de la tarjeta. */
+  overflow: hidden;
+  /* Oculta cualquier contenido que se desborde de los límites de la cara (por ejemplo, si la imagen es más grande). */
+  transition: transform 0.5s;
+  /* Define una transición suave de 0.5 segundos para la propiedad 'transform' (para los volteos). */
+}
+
+/* Cara frontal de la tarjeta */
+/* Estilos específicos para la cara frontal de la tarjeta. */
+.card .front {
+  transform: rotateY(0deg);
+  /* Establece la rotación inicial de la cara frontal a 0 grados en el eje Y (mirando directamente hacia adelante). */
+  box-shadow: 0 5px 10px #000;
+  /* Agrega una sombra a la cara frontal para darle profundidad. */
+}
+
+/* Imagen dentro de la cara frontal */
+/* Estilos para la imagen contenida dentro de la cara frontal de la tarjeta. */
+.card .front img {
+  width: 100%;
+  /* Hace que la imagen ocupe el 100% del ancho de su contenedor. */
+  height: 100%;
+  /* Hace que la imagen ocupe el 100% de la altura de su contenedor. */
+  object-fit: cover;
+  /* Escala la imagen para que llene el contenedor, recortando los bordes si es necesario, pero manteniendo su proporción para evitar distorsiones. */
+}
+
+/* Título en la parte baja de la imagen de la cara frontal */
+/* Estilos para el encabezado (h3) que aparece superpuesto en la parte inferior de la imagen frontal. */
+.card .front h3 {
+  position: absolute;
+  /* Posiciona el título de forma absoluta dentro de la cara frontal. */
+  bottom: 0;
+  /* Fija el título en la parte inferior del contenedor (cara frontal). */
+  width: 100%;
+  /* Hace que el título ocupe todo el ancho de la cara. */
+  background: rgba(0, 0, 0, 0.4);
+  /* Establece un fondo negro semitransparente para el título, permitiendo que la imagen de fondo sea visible detrás. */
+  color: white;
+  /* Define el color del texto del título como blanco. */
+  text-align: center;
+  /* Centra el texto del título horizontalmente. */
+  line-height: 45px;
+  /* Establece la altura de línea a 45 píxeles para centrar verticalmente el texto dentro de su fondo semitransparente. */
+  font-size: 20px;
+  /* Define el tamaño de la fuente del título. */
+}
+
+/* Cara trasera de la tarjeta */
+/* Estilos específicos para la cara trasera de la tarjeta. */
+.card .back {
+  transform: rotateY(180deg);
+  /* Inicialmente, rota la cara trasera 180 grados en el eje Y. Esto la coloca mirando hacia "atrás" o lejos del espectador, haciéndola invisible al principio. */
+  background: rgb(3, 35, 54);
+  /* Establece un color de fondo azul muy oscuro para la cara trasera. */
+  padding: 20px;
+  /* Añade un relleno de 20 píxeles dentro de la cara trasera. */
+  color: #f3f3f3;
+  /* Define el color del texto a un gris muy claro. */
+  display: flex;
+  /* Habilita Flexbox para organizar el contenido interno de la cara trasera. */
+  flex-direction: column;
+  /* Organiza los elementos internos en una columna (uno debajo del otro). */
+  justify-content: space-between;
+  /* Distribuye el espacio verticalmente entre los elementos hijos, colocando el primer elemento arriba y el último abajo, y distribuyendo el espacio restante de manera equitativa. */
+  text-align: center;
+  /* Centra el texto horizontalmente dentro de la cara trasera. */
+  box-shadow: 0 5px 10px #000;
+  /* Agrega una sombra a la cara trasera para darle profundidad. */
+}
+
+/* Línea superior del botón de enlace en la cara trasera */
+/* Estilos para el contenedor del enlace dentro de la cara trasera, que sirve como un área para un botón o link. */
+.card .back .link {
+  border-top: solid 1px #f3f3f3;
+  /* Añade un borde superior sólido de 1 píxel de color gris muy claro, actuando como un separador visual para el enlace. */
+  height: 50px;
+  /* Establece una altura fija para este contenedor del enlace. */
+  line-height: 50px;
+  /* Establece la altura de línea a 50px para centrar verticalmente el texto del enlace dentro de su contenedor. */
+}
+
+/* Estilo del botón de enlace dentro de la cara trasera */
+/* Estilos para el enlace real dentro del contenedor '.link' de la cara trasera. */
+.card .back .link a {
+  color: #f3f3f3;
+  /* Define el color del texto del enlace como gris muy claro. */
+  text-decoration: none;
+  /* Elimina el subrayado predeterminado del enlace. */
+}
+
+/* Título en la parte trasera */
+/* Estilos para el encabezado h3 dentro de la cara trasera. */
+.card .back h3 {
+  font-size: 28px;
+  /* Define un tamaño de fuente de 28 píxeles. */
+  letter-spacing: 2px;
+  /* Añade un espacio de 2 píxeles entre los caracteres del texto, mejorando la legibilidad del título. */
+}
+
+/* Párrafo en la parte trasera */
+/* Estilos para los párrafos dentro de la cara trasera. */
+.card .back p {
+  letter-spacing: 1px;
+  /* Añade un espacio de 1 píxel entre los caracteres del texto del párrafo. */
+  font-size: 14px;
+  /* Define el tamaño de la fuente del párrafo en 14 píxeles. */
+}
+
+/* Efecto de voltear la tarjeta al pasar el mouse */
+/* Estilos que controlan el efecto 3D cuando el cursor del ratón pasa sobre la tarjeta completa. */
+.card:hover .front {
+  transform: rotateY(180deg);
+  /* Cuando se hace hover sobre el elemento '.card', la cara frontal rota 180 grados en el eje Y, haciéndola "esconderse" hacia atrás y revelando la cara trasera. */
+}
+
+.card:hover .back {
+  transform: rotateY(360deg);
+  /* Cuando se hace hover sobre el elemento '.card', la cara trasera rota de 180deg a 360deg en el eje Y. Visualmente, esto la mueve de su posición inicial "trasera" a una posición "frontal" (0deg o 360deg son la misma vista), haciéndola visible. */
+}
+
+/* --- Media Queries para la Responsividad --- */
+
+/* Para tablets y pantallas medianas (cuando el ancho máximo del viewport es 768px o menos) */
+@media (max-width: 768px) {
+  .contenedor {
+    flex-direction: column;
+    /* Cambia la dirección del Flexbox para que las tarjetas se apilen verticalmente en una columna. */
+    align-items: center;
+    /* Centra las tarjetas horizontalmente dentro del contenedor cuando están en columna. */
+    gap: 20px;
+    /* Reduce el espacio entre las tarjetas apiladas. */
+  }
+
+  .card {
+    width: 80%;
+    /* Las tarjetas ocupan el 80% del ancho del viewport en tablets, permitiendo un poco de margen. */
+    height: auto;
+    /* La altura de la tarjeta se ajusta automáticamente al contenido para evitar recortes. */
+  }
+
+  .card .front h3 {
+    font-size: 18px;
+    /* Reduce el tamaño del título de la tarjeta frontal para adaptarlo a pantallas más pequeñas. */
+  }
+
+  .card .back p {
+    font-size: 12px;
+    /* Reduce el tamaño del párrafo en la cara trasera para mejorar la legibilidad en pantallas más pequeñas. */
+  }
+
+  .titulo-principal h1 {
+    font-size: 36px;
+    /* Reduce el tamaño del título principal de la página para que no ocupe demasiado espacio en tablets. */
+  }
+}
+
+/* Para móviles y pantallas pequeñas (cuando el ancho máximo del viewport es 480px o menos) */
+@media (max-width: 480px) {
+  .card {
+    width: 95%;
+    /* Las tarjetas ocupan casi todo el ancho disponible en móviles (95%), con un pequeño margen a los lados. */
+  }
+
+  .card .front h3 {
+    font-size: 16px;
+    /* Reduce aún más el tamaño del título de la tarjeta frontal para pantallas muy pequeñas. */
+    line-height: 40px; /* Ajusta la altura de línea si es necesario por el cambio de fuente */
+  }
+
+  .card .back p {
+    font-size: 10px;
+    /* Reduce aún más el tamaño del párrafo en la cara trasera para móviles, priorizando la visualización de todo el texto. */
+  }
+
+  .card .back h3 {
+    font-size: 24px; /* Ajusta el título de la cara trasera */
+    letter-spacing: 1px; /* Reduce el espaciado entre letras */
+  }
+
+  .titulo-principal h1 {
+    font-size: 28px;
+    /* Reduce el tamaño del título principal para que sea legible en pantallas de móvil. */
+  }
+
+  .nav {
+    padding: 10px;
+    /* Reduce el padding de la barra de navegación para hacerla más compacta en móviles. */
+  }
+
+  .inicio {
+    font-size: 16px;
+    /* Reduce el tamaño del texto del botón de inicio. */
+    padding: 8px 16px;
+    /* Reduce el padding del botón de inicio para que sea más pequeño en móviles. */
+  }
+}

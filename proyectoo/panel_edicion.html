@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Datos</title>
+    <link rel="icon" href="imagenes/logo.jpg" type="image/png">
+  <link rel="stylesheet" href="styles.css" /> <!-- Vincula tu archivo CSS -->
+</head>
+<body >
+    <center><h2>Editar Información de Cuenta</h2>
+    <form action="actualizar.php" method="POST" >
+        <input type="hidden" name="id" value="">
+        Usuario: <input type="text" name="nombre_usuario" value=""><br>
+        Email: <input type="email" name="email" value=""><br>
+        Nueva Contraseña: <input type="password" name="nueva_contraseña"><br>
+        <input type="submit" value="Actualizar Datos">
+    </form>
+    <br>
+    <a href="cerrar_sesion.php">Cerrar Sesión</a>
+    </center>
+</body>
+</html>

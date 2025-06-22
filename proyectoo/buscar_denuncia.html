@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Busca tu Denuncia</title>
+  <style>
+    /* Fondo y layout principal */
+    body {
+      background-image: url("imagenes/fondo.jpg"); /* Imagen de fondo, pon tu imagen en la carpeta imagenes */
+      background-attachment: fixed;
+      background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Botón de inicio flotante */
+    .inicio {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background-color: #8e44ad;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .inicio:hover {
+      background-color: #732d91;
+    }
+    /* Titulo principal */
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-top: 60px;
+      text-shadow: 1px 2px 8px #0007;
+      font-size: 2.8em;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+    /* Caja blanca del buscador */
+    .busqueda-box {
+      background: rgba(255,255,255,0.95);
+      padding: 32px 26px 26px 26px;
+      border-radius: 18px;
+      max-width: 440px;
+      margin: 0 auto 30px auto;
+      box-shadow: 0 8px 32px rgba(142,68,173,0.18), 0 1.5px 16px #c9b6e7;
+      border: 2px solid #8e44ad33;
+      position: relative;
+      z-index: 1;
+      animation: aparecer 1.2s cubic-bezier(.12,1.09,.37,.98);
+    }
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(-32px) scale(.95);}
+      to { opacity: 1; transform: none;}
+    }
+    /* Etiquetas y campos del formulario */
+    form label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #8e44ad;
+      letter-spacing: 0.5px;
+    }
+    form input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1.5px solid #d1a4ee;
+      margin-bottom: 18px;
+      font-size: 1.1em;
+      background: #f5eafd;
+      transition: border 0.2s;
+    }
+    form input[type="text"]:focus {
+      border: 1.5px solid #8e44ad;
+      outline: none;
+      background: #fff;
+    }
+    form input[type="submit"] {
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 12px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      box-shadow: 0 1px 8px #8e44ad30;
+      transition: background 0.2s;
+    }
+    form input[type="submit"]:hover {
+      background-color: #732d91;
+    }
+    /* iframe para resultados */
+    #resultado {
+      background: rgba(255,255,255,0.97);
+      padding: 24px;
+      border-radius: 16px;
+      max-width: 900px;
+      margin: 25px auto 0;
+      box-shadow: 0 4px 24px #8e44ad33;
+      min-height: 120px;
+      border: 1.5px solid #8e44ad3d;
+      font-size: 1.17em;
+      color: #5e2b7c;
+      z-index: 1;
+    }
+    /* Botones de acción */
+    .boton {
+      display: inline-block;
+      padding: 13px 30px;
+      margin: 12px 12px 0 12px;
+      font-size: 17px;
+      text-decoration: none;
+      color: white;
+      background-color: #3498db;
+      border-radius: 10px;
+      transition: background-color 0.3s, transform 0.17s;
+      font-weight: bold;
+      box-shadow: 0 1px 10px #3498db3b;
+      letter-spacing: 0.5px;
+    }
+    .boton:hover {
+      background-color: #2980b9;
+      transform: scale(1.07);
+    }
+    .eliminar {
+      background-color: #e74c3c;
+    }
+    .eliminar:hover {
+      background-color: #c0392b;
+    }
+    /* Capa para la lluvia de denuncias */
+    .lluvia-denuncias {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      overflow: hidden;
+    }
+    /* Estilo de cada mensaje animado de la lluvia */
+    .denuncia-spam {
+      position: absolute;
+      top: -60px;
+      font-size: 1.12em;
+      font-weight: bold;
+      color: #fff;
+      padding: 12px 38px;
+      border-radius: 30px;
+      box-shadow: 0 4px 16px #8e44ad66;
+      background: linear-gradient(90deg, #8e44ad 60%, #d1a4ee 100%);
+      opacity: 0.82;
+      white-space: nowrap;
+      animation: llover 4.5s linear forwards;
+      border: 1.5px solid #fff5;
+      text-shadow: 1px 1px 6px #0007;
+      filter: blur(0.1px);
+    }
+    @keyframes llover {
+      0% {
+        top: -60px;
+        opacity: 0.55;
+        filter: blur(0.6px);
+      }
+      80% {
+        opacity: 0.92;
+        filter: blur(0px);
+      }
+      100% {
+        top: 100vh;
+        opacity: 0.1;
+        filter: blur(1px);
+      }
+    }
+    /* Responsive para móviles */
+    @media (max-width: 600px) {
+      .busqueda-box {
+        padding: 18px 7px 10px 7px;
+        border-radius: 10px;
+        max-width: 96vw;
+      }
+      #resultado {
+        padding: 11px;
+        border-radius: 8px;
+        font-size: 1em;
+      }
+      .boton {
+        padding: 9px 14px;
+        font-size: 1em;
+        margin: 10px 4px 0 4px;
+        border-radius: 7px;
+      }
+      .denuncia-spam {
+        font-size: 0.85em;
+        padding: 6px 22px;
+        border-radius: 18px;
+      }
+      h1 { font-size: 1.3em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Botón de regreso al inicio -->
+  <a href="formularios2.0.html" class="inicio">Inicio</a>
+  <!-- Título grande -->
+  <h1>Busca tu Denuncia</h1>
+  <!-- Caja blanca con formulario y botones -->
+  <div class="busqueda-box">
+    <form id="formBusqueda" method="POST" action="php/buscar_denuncia.php" target="resultadoFrame">
+      <label for="id_denuncia">🔎 ID de la denuncia:</label>
+      <input type="text" name="id_denuncia" id="id_denuncia" required placeholder="Ejemplo: 123" />
+      <input type="submit" value="Buscar denuncia" />
+    </form>
+    <div style="text-align:center;">
+      <a href="eliminar.html" class="boton eliminar">Eliminar denuncia</a>
+      <a href="modificar.html" class="boton">Modificar denuncia</a>
+    </div>
+  </div>
+  <!-- Resultados de la búsqueda se muestran aquí -->
+ <!-- Contenedor centrado -->
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+    <iframe name="resultadoFrame" id="resultado" frameborder="0" scrolling="auto"></iframe>
+  </div>
+  
+  <!-- Estilos embebidos o en tu CSS principal -->
+  <style>
+    #resultado {
+      width: 90%;
+      max-width: 1000px;
+      height: 350px;
+      border: 2px solid #6a00ff;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(106, 0, 255, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #ffffffee;
+      padding: 10px;
+    }
+  
+    #resultado:hover {
+      transform: scale(1.01);
+      box-shadow: 0 15px 35px rgba(106, 0, 255, 0.4);
+    }
+  </style>
+  
+  <!-- Capa para la animación de la lluvia -->
+  <div class="lluvia-denuncias" id="lluviaDenuncias"></div>
+  <script>
+    // Array de mensajes para la lluvia animada
+    const mensajesDenuncia = [
+      "¡Denuncia enviada!",
+      "¡No calles, denuncia!",
+      "Denuncia recibida 🚨",
+      "¡Alza la voz! 📢",
+      "¡Tu denuncia importa!",
+      "Protege tus derechos",
+      "¡Rompe el silencio!",
+      "¡Justicia para tod@s!",
+      "Denuncia anónima",
+      "¡Actúa ahora!",
+      "¡Basta de violencia!",
+      "Denuncia registrada",
+      "¡Apoyo disponible!",
+      "¡No estás sol@!",
+      "¡Haz visible tu caso!",
+      "¡Junt@s contra la violencia!",
+      "¡Tu voz es poderosa!",
+      "¡Denuncia segura!",
+      "¡No más silencio!",
+      "¡Acción ya!"
+    ];
+
+    /**
+     * Función para generar la lluvia de mensajes animados.
+     * Crea elementos span con mensajes aleatorios que caen de arriba hacia abajo.
+     */
+    function lluviaDenuncias() {
+      const contenedor = document.getElementById("lluviaDenuncias");
+      const ancho = window.innerWidth;
+      // Crea varias denuncias "cayendo" cada 420ms
+      setInterval(() => {
+        const span = document.createElement("span");
+        span.className = "denuncia-spam";
+        // Mensaje aleatorio
+        span.textContent = mensajesDenuncia[Math.floor(Math.random()*mensajesDenuncia.length)];
+        // Posición aleatoria horizontal
+        span.style.left = Math.random() * (ancho - 160) + "px";
+        // Velocidad aleatoria de caída
+        span.style.animationDuration = (3.4 + Math.random()*2.1) + "s";
+        contenedor.appendChild(span);
+        // Elimina el span cuando termina su animación
+        setTimeout(() => {
+          contenedor.removeChild(span);
+        }, 5000);
+      }, 420);
+    }
+    lluviaDenuncias();
+
+    /**
+     * Validación amigable para el usuario cuando no se encuentran denuncias.
+     * Si el backend responde vacío o con un texto típico de "no existe", se muestra un mensaje al usuario.
+     */
+    document.getElementById('resultado').addEventListener('load', function() {
+      try {
+        const iframe = document.getElementById('resultado');
+        // Obtiene el documento interno del iframe
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        // Extrae el texto plano del contenido del iframe
+        const texto = doc.body ? doc.body.textContent.trim() : "";
+        // Si el backend regresa vacío o mensajes típicos de no encontrado, muestra mensaje personalizado
+        if (texto === "" || /no\s+se\s+encontr(ó|aron)|no\s+existe|sin\s+resultados|no\s+hay/i.test(texto)) {
+          doc.body.innerHTML = `
+            <div style="color:#c0392b; text-align:center; font-size:1.25em; padding:40px 0;">
+              <b>❌ No se encontró ninguna denuncia con ese ID.</b><br>
+              Por favor, verifica el identificador e intenta nuevamente.
+            </div>
+          `;
+        }
+      } catch(e) {
+        // Si ocurre un error de CORS, no hacer nada
+      }
+    });
+  </script>
+</body>
+</html>

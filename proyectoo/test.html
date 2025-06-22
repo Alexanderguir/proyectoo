@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CECY Ayuda</title>
+  <link rel="icon" href="imagenes/logo.jpg" type="image/png">
+  <link rel="stylesheet" href="Untitled-1.css" />
+</head>
+<body>
+  <style>
+  
+  .nav {
+    /*barra de navegación superior. */
+    width: 100%;
+    /* Hace que el elemento ocupe el 100% del ancho de su contenedor padre. */
+    padding: 15px;
+    /* Añade un espacio de 15 píxeles alrededor del contenido interno del 'nav', creando un relleno uniforme. */
+    background-color: rgba(119, 23, 23, 0.5);
+    /* Establece el color de fondo a un tono rojizo oscuro (119, 23, 23) con una opacidad del 50% (0.5), haciéndolo semitransparente. */
+    text-align: left;
+    /* Alinea el texto dentro de este contenedor a la izquierda. */
+  }
+  .nav .inicio {
+    /* Estilos aplicados a un elemento con la clase 'inicio' que es un descendiente directo o indirecto de un elemento con la clase 'nav'. Esto podría ser un botón o enlace de "Inicio" dentro de la barra de navegación. */
+    color: #fff;
+    /* Define el color del texto como blanco. */
+    text-decoration: none;
+    /* Elimina cualquier subrayado de texto, común en los enlaces. */
+    font-weight: 700;
+    /* Establece el grosor de la fuente a 700 (negrita). */
+    font-size: 1.2em;
+    /* Ajusta el tamaño de la fuente a 1.2 veces el tamaño de fuente del elemento padre. */
+    padding: 11px 30px;
+    /* Añade 11 píxeles de relleno vertical (arriba y abajo) y 30 píxeles de relleno horizontal (izquierda y derecha). */
+    border-radius: 30px;
+    /* Redondea completamente las esquinas del elemento, dándole una forma de píldora o botón redondeado. */
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    /* Define una transición suave de 0.3 segundos para las propiedades 'background', 'color' y 'box-shadow' cuando cambien. Esto crea un efecto de animación al pasar el ratón. */
+    background: linear-gradient(90deg, #a4508b 0%, #f6d365 100%);
+    /* Aplica un degradado lineal como fondo. Empieza con #a4508b (morado) al 0% y termina con #f6d365 (amarillo claro) al 100%, con una dirección de 90 grados (de izquierda a derecha). */
+    box-shadow: 0 2px 8px rgba(164, 80, 139, 0.21);
+    /* Añade una sombra al elemento: 0px horizontal, 2px vertical, 8px de desenfoque, y un color morado semitransparente. */
+    border: 2px solid #fff3;
+    /* Establece un borde sólido de 2 píxeles con un color blanco altamente transparente (#fff3). */
+  }
+  .nav .inicio:hover {
+    /* Estilos aplicados al elemento '.nav .inicio' cuando el cursor del ratón está sobre él. */
+    background: linear-gradient(90deg, #f6d365 0%, #a4508b 100%);
+    /* Invierte el degradado de fondo: ahora de amarillo a morado. */
+    color: #232137;
+    /* Cambia el color del texto a un gris muy oscuro, casi negro. */
+    box-shadow: 0 0 12px #a4508b77;
+    /* Modifica la sombra: sin desplazamiento, mayor desenfoque (12px), y un color morado más visible. */
+  }
+  /* --- Estilo al pasar el mouse sobre los enlaces --- */
+  /* Comentario general para la sección de estilos de hover de enlaces. */
+  .navbar a:hover {
+    /* Estilos aplicados a cualquier enlace (<a>) cuando el cursor está sobre él, SIEMPRE Y CUANDO ese enlace esté dentro de un elemento con la clase 'navbar'.
+       **¡IMPORTANTE!** Hay una posible inconsistencia aquí: si tu barra de navegación es '.nav' (como se define arriba), este selector debería ser '.nav a:hover' para aplicarse a los enlaces dentro de ella. */
+    background-color: #575757;
+    /* Cambia el color de fondo del enlace a un gris oscuro al pasar el ratón. */
+    color: white;
+    /* Asegura que el color del texto del enlace sea blanco para una mejor legibilidad sobre el fondo gris. */
+  }
+  
+  body {
+    /* Estilos aplicados a todo el cuerpo del documento HTML. */
+    margin: 0;
+    /* Elimina el margen predeterminado del navegador alrededor del cuerpo de la página. */
+    padding: 0;
+    /* Elimina el relleno predeterminado del navegador dentro del cuerpo de la página. */
+    font-family: Arial, sans-serif;
+    /* Establece la fuente de texto a Arial. Si no está disponible, usará una fuente genérica sans-serif. */
+    background-image: url("imagenes/fondo.jpg");
+    /* Establece una imagen de fondo para el cuerpo de la página, buscando el archivo 'fondo.jpg' dentro de la carpeta 'imagenes'. */
+    background-size: cover;
+    /* Escala la imagen de fondo para que cubra todo el área del cuerpo, recortando los bordes si es necesario. */
+    background-position: center;
+    /* Centra la imagen de fondo horizontal y verticalmente dentro del cuerpo. */
+  }
+  
+  /* Contenedor central blanco */
+  /* Comentario general para la sección del contenedor central. */
+  .content {
+    /* Estilos aplicados a cualquier elemento con la clase 'content'. Probablemente un área principal de contenido. */
+    background-color: rgb(21, 170, 158);
+    /* Establece el color de fondo del contenedor a un tono verde azulado (teal). */
+    padding: 40px;
+    /* Añade un relleno de 40 píxeles alrededor del contenido interno del contenedor. */
+    border-radius: 12px;
+    /* Redondea las esquinas del contenedor con un radio de 12 píxeles. */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Agrega una sombra al contenedor: 0px horizontal, 4px vertical, 15px de desenfoque, y un color negro semitransparente. */
+    max-width: 700px;
+    /* Limita el ancho máximo del contenedor a 700 píxeles, evitando que se estire demasiado en pantallas grandes. */
+    margin: 60px auto;
+    /* Establece un margen de 60 píxeles en la parte superior e inferior, y margenes automáticos a la izquierda y derecha para centrar el contenedor horizontalmente. */
+  }
+  
+  h2 {
+    /* Estilos aplicados a todos los encabezados de nivel 2 (<h2>). */
+    text-align: center;
+    /* Centra el texto de los encabezados <h2>. */
+    color: #0e0505;
+    /* Establece el color del texto de los encabezados <h2> a un gris casi negro. */
+  }
+  
+  #formularioTest {
+    /* Estilos aplicados al elemento con el ID 'formularioTest'. Esto es para un formulario o test específico. */
+    color: #080303;
+    /* Establece el color del texto dentro del formulario a un gris muy oscuro, casi negro. */
+  }
+  
+  #formularioTest p {
+    /* Estilos aplicados a los párrafos (<p>) que están dentro del elemento con el ID 'formularioTest'. */
+    font-weight: bold;
+    /* Hace que el texto de estos párrafos sea negrita. */
+    margin-top: 20px;
+    /* Añade un margen de 20 píxeles encima de estos párrafos. */
+  }
+  
+  #formularioTest label {
+    /* Estilos aplicados a las etiquetas (<label>) que están dentro del elemento con el ID 'formularioTest'. */
+    display: block;
+    /* Hace que las etiquetas se comporten como elementos de bloque, ocupando todo el ancho disponible y haciendo que los siguientes elementos se coloquen en una nueva línea. */
+    margin-left: 10px;
+    /* Añade un margen de 10 píxeles a la izquierda de las etiquetas. */
+    margin-top: 5px;
+    /* Añade un margen de 5 píxeles encima de las etiquetas. */
+  }
+  
+  #formularioTest input[type="radio"] {
+    /* Estilos aplicados a los elementos <input> cuyo 'type' es "radio" y que están dentro de '#formularioTest'. */
+    margin-right: 8px;
+    /* Añade un margen de 8 píxeles a la derecha de los botones de radio, separándolos de su texto o etiquetas. */
+  }
+  
+  #formularioTest button {
+    /* Estilos aplicados a los elementos <button> que están dentro del elemento con el ID 'formularioTest'. */
+    background-color: #3498db;
+    /* Establece el color de fondo del botón a un azul estándar. */
+    color: white;
+    /* Define el color del texto del botón como blanco. */
+    border: none;
+    /* Elimina cualquier borde predeterminado del botón. */
+    padding: 10px 20px;
+    /* Añade un relleno de 10 píxeles vertical y 20 píxeles horizontal al botón. */
+    border-radius: 5px;
+    /* Redondea las esquinas del botón con un radio de 5 píxeles. */
+    cursor: pointer;
+    /* Cambia el cursor a una mano (puntero) cuando se pasa sobre el botón, indicando que es clicable. */
+    margin-top: 20px;
+    /* Añade un margen de 20 píxeles encima del botón. */
+  }
+  
+  #formularioTest button:hover {
+    /* Estilos aplicados a los botones dentro de '#formularioTest' cuando el cursor del ratón está sobre ellos. */
+    background-color: #2980b9;
+    /* Cambia el color de fondo del botón a un azul más oscuro al pasar el ratón. */
+  }
+  
+  #resultadoTest {
+    /* Estilos aplicados al elemento con el ID 'resultadoTest'. Esto es para mostrar los resultados de un test. */
+    margin-top: 30px;
+    /* Añade un margen de 30 píxeles encima del elemento de resultado. */
+    font-weight: bold;
+    /* Hace que el texto dentro de este elemento sea negrita. */
+    text-align: center;
+    /* Centra el texto dentro de este elemento. */
+  }
+  
+  #barraProgreso {
+    /* Estilos aplicados al elemento con el ID 'barraProgreso'. Probablemente un contenedor para una barra de progreso. */
+    height: 15px;
+    /* Establece la altura de la barra de progreso a 15 píxeles. */
+    background-color: #ddd;
+    /* Define un color de fondo gris claro para la parte "vacía" de la barra de progreso. */
+    border-radius: 5px;
+    /* Redondea las esquinas de la barra de progreso. */
+    margin-top: 20px;
+    /* Añade un margen de 20 píxeles encima de la barra de progreso. */
+    overflow: hidden;
+    /* Oculta cualquier contenido que se desborde de los límites de la barra, útil para el relleno interno de la barra que se mueve. */
+  }
+  
+  #barra {
+    /* Estilos aplicados al elemento con el ID 'barra', que probablemente es la parte que "llena" la barra de progreso. */
+    height: 100%;
+    /* Hace que esta barra ocupe el 100% de la altura de su contenedor padre ('#barraProgreso'). */
+    background-color: #4caf50;
+    /* Establece un color de fondo verde para la parte "llena" de la barra. */
+    width: 0%;
+    /* Inicia el ancho de la barra en 0%. Esto se cambiará dinámicamente con JavaScript para mostrar el progreso. */
+    border-radius: 5px;
+    /* Redondea las esquinas de la barra, heredando la forma de su contenedor. */
+  }
+  
+  #botonReiniciar {
+    /* Estilos aplicados al elemento con el ID 'botonReiniciar'. */
+    background-color: crimson;
+    /* Establece el color de fondo del botón a un rojo intenso. */
+    color: white;
+    /* Define el color del texto del botón como blanco. */
+    border: none;
+    /* Elimina cualquier borde predeterminado del botón. */
+    padding: 10px 20px;
+    /* Añade un relleno de 10 píxeles vertical y 20 píxeles horizontal. */
+    border-radius: 5px;
+    /* Redondea las esquinas del botón. */
+    cursor: pointer;
+    /* Cambia el cursor a una mano al pasar sobre el botón. */
+    display: block;
+    /* Hace que el botón se comporte como un elemento de bloque, ocupando su propia línea. */
+    margin: 30px auto 0;
+    /* Centra el botón horizontalmente (margen auto) y le da un margen superior de 30 píxeles, sin margen inferior. */
+  }
+  
+  #botonReiniciar:hover {
+    /* Estilos aplicados al botón con ID 'botonReiniciar' cuando el cursor del ratón está sobre él. */
+    background-color: darkred;
+    /* Cambia el color de fondo del botón a un rojo más oscuro al pasar el ratón. */
+  }
+  </style>
+<nav class="nav">
+  <a href="cecy.html" class="inicio">Inicio</a>
+  <!-- Botón para cambiar entre claro y oscuro -->
+</nav>
+  <!-- CONTENEDOR CENTRAL -->
+  <div class="content">
+    <h2>Test: ¿Reconoces una situación de violencia?</h2>
+<!-- Etiqueta para insertar el audio -->
+<audio controls>
+  <source src="audios/explicacion_del_test.ogg" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<form id="formularioTest">
+  <p>1. Si tu pareja te revisa el celular sin tu permiso, ¿es violencia?</p>
+  <label><input type="radio" name="q1" value="1"> Sí, es invasión de privacidad</label>
+  <label><input type="radio" name="q1" value="0"> No, está bien si confío en mi pareja</label>
+
+  <p>2. Si alguien te grita o insulta constantemente, ¿es normal en una relación?</p>
+  <label><input type="radio" name="q2" value="1"> No, es violencia verbal</label>
+  <label><input type="radio" name="q2" value="0"> Sí, a veces pasa</label>
+
+  <p>3. Si una persona te obliga a hacer algo sexual que no quieres, ¿qué es?</p>
+  <label><input type="radio" name="q3" value="1"> Violencia sexual</label>
+  <label><input type="radio" name="q3" value="0"> Una muestra de cariño</label>
+
+  <p>4. Si tu pareja controla con quién hablas o sales, ¿es violencia?</p>
+  <label><input type="radio" name="q4" value="1"> Sí, es control y violencia</label>
+  <label><input type="radio" name="q4" value="0"> No, es por amor o cuidado</label>
+
+  <p>5. Si recibes amenazas de publicar fotos íntimas tuyas, ¿es violencia?</p>
+  <label><input type="radio" name="q5" value="1"> Sí, es violencia digital</label>
+  <label><input type="radio" name="q5" value="0"> No, solo es una advertencia</label>
+
+  <p>6. Si alguien te empuja o golpea durante una discusión, ¿es un acto normal?</p>
+  <label><input type="radio" name="q6" value="1"> No, es violencia física</label>
+  <label><input type="radio" name="q6" value="0"> Sí, puede pasar enojados</label>
+
+  <p>7. Tu pareja decide en todo momento cómo debes vestirte, ¿es violencia?</p>
+  <label><input type="radio" name="q7" value="1"> Sí, es violencia psicológica</label>
+  <label><input type="radio" name="q7" value="0"> No, solo opina por mi bien</label>
+
+  <button type="button" onclick="calcularResultado()">Ver resultado</button>
+</form>
+
+<!-- RESULTADO Y BARRA -->
+<div id="resultadoTest"></div>
+<div id="barraProgreso">
+  <div id="barra"></div>
+</div>
+
+<!-- BOTÓN REINICIAR -->
+<button id="botonReiniciar" onclick="reiniciarTest()">Reiniciar Test</button>
+
+<script>
+// Mostrar resultado guardado si existe
+document.addEventListener("DOMContentLoaded", () => {
+  const resultadoGuardado = localStorage.getItem("resultadoTest");
+  const progresoGuardado = localStorage.getItem("barraTest");
+  if (resultadoGuardado) {
+    document.getElementById("resultadoTest").innerHTML = resultadoGuardado;
+  }
+  if (progresoGuardado) {
+    document.getElementById("barra").style.width = progresoGuardado;
+  }
+});
+
+// Calcular el resultado del test
+function calcularResultado() {
+  const form = document.forms["formularioTest"];
+  let puntuacion = 0;
+  let respondidas = true;
+  const total = 7; // Número de preguntas
+
+  for (let i = 1; i <= total; i++) {
+    const radios = form["q" + i];
+    let respuesta = null;
+    if (radios) {
+      if (radios.length) { // más de una opción
+        for (let r of radios) {
+          if (r.checked) respuesta = r.value;
+        }
+      } else {
+        if (radios.checked) respuesta = radios.value;
+      }
+    }
+    if (respuesta === null) {
+      respondidas = false;
+    }
+    puntuacion += parseInt(respuesta || 0);
+  }
+
+  if (!respondidas) {
+    alert("Por favor responde todas las preguntas.");
+    return;
+  }
+
+  const resultado = document.getElementById("resultadoTest");
+  const barra = document.getElementById("barra");
+  const porcentaje = (puntuacion / total) * 100;
+  let mensaje = "";
+
+  if (puntuacion === total) {
+    mensaje = "✅ <b>¡Excelente!</b> Reconoces claramente todas las señales de violencia.";
+    resultado.style.color = "green";
+  } else if (puntuacion >= total - 2) {
+    mensaje = "🟡 <b>¡Bien!</b> Tienes un buen conocimiento, pero aún puedes informarte más.";
+    resultado.style.color = "#fba400";
+  } else if (puntuacion >= total / 2) {
+    mensaje = "⚠️ <b>Atención:</b> Algunas formas de violencia pueden pasar desapercibidas. Infórmate y busca apoyo.";
+    resultado.style.color = "#e67e22";
+  } else {
+    mensaje = "🚨 <b>Urgente:</b> Es muy importante que aprendas a reconocer la violencia. ¡Infórmate y busca ayuda!";
+    resultado.style.color = "red";
+  }
+
+  resultado.innerHTML = mensaje;
+  barra.style.width = porcentaje + "%";
+  // Guarda resultado y progreso
+  localStorage.setItem("resultadoTest", mensaje);
+  localStorage.setItem("barraTest", porcentaje + "%");
+}
+
+// Limpia resultados y reinicia
+function reiniciarTest() {
+  localStorage.removeItem("resultadoTest");
+  localStorage.removeItem("barraTest");
+  location.reload();
+}
+</script>
+</div>
+</body>
+</html>

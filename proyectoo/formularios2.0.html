@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Formulario de Violencia de Género</title> <style>
+        /* Estilo base del cuerpo de la página */
+        body {
+            font-family: 'Montserrat', Arial, sans-serif; /* Define la fuente principal del texto en el cuerpo de la página. */
+            margin: 0; /* Elimina el margen exterior predeterminado del cuerpo. */
+            padding: 0; /* Elimina el espacio de relleno interior predeterminado del cuerpo. */
+            background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%); /* Aplica un degradado lineal como color de fondo. */
+            min-height: 100vh; /* Establece la altura mínima del cuerpo al 100% de la altura de la ventana de visualización. */
+        }
+
+        /* Contenedor principal del formulario */
+        .container {
+            background: #fff; /* Establece el color de fondo del contenedor como blanco. */
+            max-width: 500px; /* Define el ancho máximo del contenedor. */
+            margin: 50px auto 0 auto; /* Centra el contenedor horizontalmente y le da un margen superior de 50px. */
+            padding: 44px 36px 36px 36px; /* Establece el relleno interior del contenedor. */
+            border-radius: 28px; /* Redondea las esquinas del contenedor. */
+            box-shadow: 0 12px 48px 10px #000a, 0 8px 32px #a4508b33; /* Aplica múltiples sombras al contenedor para un efecto visual. */
+            position: relative; /* Establece la posición relativa para permitir el posicionamiento de elementos hijos absolutos. */
+            overflow: visible; /* Permite que el contenido que sobresale del contenedor sea visible. */
+        }
+
+        /* Borde tornasol animado alrededor del formulario */
+        .tornasol-border {
+            position: absolute; /* Posiciona el elemento de forma absoluta con respecto a su contenedor padre relativo. */
+            top: -12px; left: -12px; right: -12px; bottom: -12px; /* Expande el borde 12px hacia afuera de cada lado del contenedor. */
+            z-index: 0; /* Coloca el borde detrás de otros elementos. */
+            border-radius: 38px; /* Redondea las esquinas del borde. */
+            background: conic-gradient(from var(--angle, 0deg), #7f53ac 0%, #a4508b 25%, #f6d365 50%, #43e97b 75%, #38f9d7 100%); /* Aplica un degradado cónico como fondo del borde. */
+            filter: blur(22px) brightness(0.7); /* Aplica un desenfoque y ajusta el brillo del borde. */
+            opacity: 0.35; /* Establece la opacidad del borde. */
+            pointer-events: none; /* Desactiva los eventos del puntero en el borde para que no interfiera con otros elementos. */
+            animation: rotateBorder 7s linear infinite; /* Aplica una animación de rotación al borde. */
+        }
+
+        @keyframes rotateBorder {
+            to { --angle: 360deg; } /* Define el estado final de la animación, rotando el ángulo a 360 grados. */
+        }
+
+        /* Título principal del formulario */
+        h1 {
+            color: #181826; /* Establece el color de texto del título. */
+            background: linear-gradient(90deg, #a4508b 10%, #f6d365 90%); /* Aplica un degradado lineal como fondo para el texto. */
+            -webkit-background-clip: text; /* Recorta el fondo al texto para navegadores basados en WebKit. */
+            -webkit-text-fill-color: transparent; /* Hace el color de relleno del texto transparente para navegadores basados en WebKit. */
+            background-clip: text; /* Recorta el fondo al texto para navegadores modernos. */
+            font-family: 'Montserrat', Arial, sans-serif; /* Define la fuente del título. */
+            font-size: 2.5em; /* Establece el tamaño de fuente del título. */
+            letter-spacing: 0.11em; /* Ajusta el espaciado entre letras del título. */
+            text-align: center; /* Centra el texto del título. */
+            margin-bottom: 22px; /* Establece un margen inferior para el título. */
+            font-weight: 900; /* Define el grosor de la fuente del título. */
+            text-shadow: 0 4px 18px #fff, 0 1px 14px #f6d36599, 0 0 2px #a4508b33, 0 0 0 #000; /* Aplica múltiples sombras al texto del título. */
+        }
+
+        /* Etiquetas de los campos */
+        label {
+            color: #232137; /* Establece el color de texto de las etiquetas. */
+            font-weight: 700; /* Define el grosor de la fuente de las etiquetas. */
+            letter-spacing: 0.06em; /* Ajusta el espaciado entre letras de las etiquetas. */
+            display: block; /* Muestra las etiquetas como elementos de bloque. */
+            margin-bottom: 6px; /* Establece un margen inferior para las etiquetas. */
+            text-shadow: 0 2px 10px #fff, 0 0 5px #f6d36555, 0 0 1px #a4508b33; /* Aplica múltiples sombras al texto de las etiquetas. */
+            font-size: 1.13em; /* Establece el tamaño de fuente de las etiquetas. */
+        }
+
+        /* Campos de texto, email, fecha y select */
+        input[type="text"], input[type="number"], input[type="email"], input[type="date"], select {
+            width: 100%; /* Ocupa el 100% del ancho disponible. */
+            padding: 14px 13px; /* Establece el relleno interior de los campos. */
+            border: 2.2px solid #a4508b95; /* Define el borde de los campos. */
+            border-radius: 9px; /* Redondea las esquinas de los campos. */
+            background: #fff; /* Establece el color de fondo de los campos como blanco. */
+            font-size: 1.13em; /* Establece el tamaño de fuente de los campos. */
+            margin-bottom: 22px; /* Establece un margen inferior para los campos. */
+            margin-top: 2px; /* Establece un margen superior para los campos. */
+            color: #232137; /* Establece el color de texto de los campos. */
+            font-family: 'Montserrat', Arial, sans-serif; /* Define la fuente de los campos. */
+            font-weight: 700; /* Define el grosor de la fuente de los campos. */
+            transition: border 0.2s, box-shadow 0.2s; /* Aplica una transición suave a los cambios de borde y sombra. */
+            box-shadow: 0 2px 12px #a4508b18; /* Aplica una sombra a los campos. */
+        }
+
+        /* Efecto al enfocar campos */
+        input:focus, select:focus {
+            border-color: #f6d365; /* Cambia el color del borde al enfocar el campo. */
+            outline: none; /* Elimina el contorno predeterminado al enfocar. */
+            box-shadow: 0 0 0 2px #f6d36588; /* Aplica una sombra al enfocar el campo. */
+        }
+
+        /* Grupo de botones de opción y sus etiquetas */
+        .radio-group, .radio-group label {
+            display: inline-block; /* Muestra los elementos como bloques en línea. */
+            margin-right: 28px; /* Establece un margen derecho para los elementos del grupo. */
+            font-weight: 700; /* Define el grosor de la fuente. */
+            color: #a4508b; /* Establece el color de texto. */
+            font-size: 1.13em; /* Establece el tamaño de fuente. */
+            text-shadow: 0 1px 6px #fff, 0 0 2px #f6d36577; /* Aplica sombras al texto. */
+        }
+
+        /* Estilo de los botones de opción */
+        input[type="radio"] {
+            accent-color: #a4508b; /* Define el color de acento de los botones de radio. */
+            margin-right: 8px; /* Establece un margen derecho para los botones de radio. */
+            transform: scale(1.18); /* Escala los botones de radio ligeramente. */
+        }
+
+        /* Campo para subir archivo */
+        input[type="file"] {
+            color: #a4508b; /* Establece el color de texto del campo de archivo. */
+            margin-bottom: 18px; /* Establece un margen inferior para el campo de archivo. */
+            font-size: 1em; /* Establece el tamaño de fuente del campo de archivo. */
+        }
+
+        /* Botones principales del formulario */
+        input[type="submit"], input[type="reset"], button, .boton {
+            display: inline-block; /* Muestra los elementos como bloques en línea. */
+            padding: 15px 35px; /* Establece el relleno interior de los botones. */
+            margin: 20px 10px 0 0; /* Establece los márgenes de los botones. */
+            font-size: 1.18em; /* Establece el tamaño de fuente de los botones. */
+            font-weight: 900; /* Define el grosor de la fuente de los botones. */
+            border: none; /* Elimina el borde de los botones. */
+            border-radius: 14px; /* Redondea las esquinas de los botones. */
+            background: linear-gradient(90deg, #a4508b 10%, #f6d365 90%); /* Aplica un degradado lineal como fondo de los botones. */
+            color: #181826; /* Establece el color de texto de los botones. */
+            box-shadow: 0 7px 24px #fff, 0 2px 8px #a4508b44, 0 0 0 2px #fff, 0 0 0 6px #fff8; /* Aplica múltiples sombras a los botones. */
+            cursor: pointer; /* Cambia el cursor al pasar sobre los botones. */
+            transition: background 0.3s, color 0.3s, transform 0.18s, box-shadow 0.2s; /* Aplica una transición suave a los cambios de fondo, color, transformación y sombra. */
+            letter-spacing: 0.09em; /* Ajusta el espaciado entre letras de los botones. */
+            text-shadow: 0 2px 10px #fff, 0 0 5px #f6d36577, 0 0 0 #000; /* Aplica sombras al texto de los botones. */
+        }
+
+        /* Efecto hover en los botones */
+        input[type="submit"]:hover, input[type="reset"]:hover, button:hover, .boton:hover {
+            background: linear-gradient(90deg, #f6d365 0%, #a4508b 100%); /* Cambia el degradado de fondo al pasar el ratón. */
+            color: #fff; /* Cambia el color de texto a blanco al pasar el ratón. */
+            transform: translateY(-2px) scale(1.10); /* Mueve y escala ligeramente el botón al pasar el ratón. */
+            box-shadow: 0 8px 36px #f6d36588, 0 1px 10px #a4508b66, 0 0 0 2.5px #f6d365, 0 0 0 6px #fff8; /* Aplica múltiples sombras al pasar el ratón. */
+            text-shadow: 0 2px 10px #a4508b, 0 0 5px #f6d365, 0 0 0 #fff; /* Cambia las sombras del texto al pasar el ratón. */
+        }
+
+        .boton {
+            margin: 20px 0 0 18px; /* Establece los márgenes para la clase "boton". */
+            text-decoration: none; /* Elimina la decoración de texto (subrayado) para la clase "boton". */
+        }
+
+        form {
+            margin-top: 24px; /* Establece un margen superior para el formulario. */
+            position: relative; /* Establece la posición relativa para el formulario. */
+            z-index: 2; /* Coloca el formulario por encima de otros elementos. */
+        }
+
+        /* Responsividad para móviles */
+        @media (max-width: 600px) { /* Aplica estilos cuando el ancho de la pantalla es de 600px o menos. */
+            .container {
+                max-width: 99vw; /* Establece el ancho máximo del contenedor al 99% del ancho de la ventana de visualización. */
+                padding: 8vw 2vw 7vw 2vw; /* Ajusta el relleno interior del contenedor usando unidades de vista. */
+                border-radius: 17px; /* Redondea las esquinas del contenedor. */
+            }
+            .tornasol-border {
+                border-radius: 17px; /* Redondea las esquinas del borde tornasol. */
+            }
+            h1 {
+                font-size: 1.3em; /* Reduce el tamaño de fuente del título. */
+            }
+            input[type="submit"], input[type="reset"], .boton, button {
+                padding: 13px 6vw; /* Ajusta el relleno de los botones usando unidades de vista. */
+                font-size: 1em; /* Reduce el tamaño de fuente de los botones. */
+            }
+        }
+
+        /* Estilo de los textos dentro de placeholders */
+        ::placeholder {
+            color: #a4508b; /* Establece el color de texto del placeholder. */
+            opacity: 1; /* Asegura que el placeholder sea completamente opaco. */
+            font-weight: 700; /* Define el grosor de la fuente del placeholder. */
+            font-size: 1em; /* Establece el tamaño de fuente del placeholder. */
+        }
+    </style>
+
+    <link rel="stylesheet" href="Untitled-1.css"> </head>
+
+<body>
+    <div class="container"> <div class="tornasol-border"></div> <h1>Formulario de Violencia de Género</h1> <div style="text-align:center;"> <button type="button" onclick="toggleFormulario()">Haz tu denuncia!!</button> <a class="boton" href="buscar_denuncia.html">Buscar Denuncia</a> </div>
+
+        <form id="Form" action="php/guardar_violencia.php" method="POST" enctype="multipart/form-data" style="display:none;">
+            <label>Escribe tu nombre:</label> <input type="text" name="nombre" placeholder="Ejemplo:Israel" required> <label>Edad:</label> <input type="number" name="edad" placeholder="Ejemplo: 17" required> <label>Teléfono (10 dígitos):</label> <input type="text" name="telefono" pattern="[0-9]{10}" placeholder="Ejemplo: 5551234567" required> <label>Correo electrónico:</label> <input type="email" name="email" placeholder="ejemplo@email.com" required> <label>Género:</label> <select name="genero"> <option value="Hombre">Hombre</option> <option value="Mujer">Mujer</option> <option value="Otro">Otro</option> </select>
+
+            <label>¿Has sufrido violencia?</label> <div class="radio-group"> <label><input type="radio" name="violencia" value="Sí" required> Sí</label> <label><input type="radio" name="violencia" value="No"> No</label> </div>
+
+            <label>Lugar en el que sucedió:</label> <select name="lugar"> <option value="casa">Casa</option> <option value="trabajo">Trabajo</option> <option value="escuela">Escuela</option> <option value="otro">Otro</option> </select>
+
+            <label>Describe al agresor:</label> <input type="text" name="agresor" placeholder="Describa al agresor"> <label>¿Eras consciente?</label> <div class="radio-group"> <label><input type="radio" name="consciente" value="Sí" required> Sí</label> <label><input type="radio" name="consciente" value="No"> No</label> </div>
+
+            <label>Fecha del suceso:</label> <input type="date" name="fecha" required> <label>Evidencia:</label> <input type="file" name="evidencia"> <input type="submit" name="botonSubmit" value="Enviar"> <input type="reset" name="botonReinicio" value="Reiniciar"> </form>
+    </div>
+
+    <script>
+        function toggleFormulario() { // Define la función JavaScript 'toggleFormulario'.
+            const formulario = document.getElementById("Form"); // Obtiene el elemento del formulario por su ID.
+            if (formulario.style.display === "none" || formulario.style.display === "") { // Comprueba si el formulario está oculto o no tiene estilo display.
+                formulario.style.display = "block"; // Si está oculto, lo muestra como un bloque.
+            } else {
+                formulario.style.display = "none"; // Si está visible, lo oculta.
+            }
+        }
+    </script>
+
+    <script src="validacion_formulario.js"></script> </body>
+</html>

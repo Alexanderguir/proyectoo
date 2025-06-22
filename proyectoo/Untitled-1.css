@@ -1,0 +1,424 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap");
+/* Importa fuentes de Google Fonts. Esto permite usar las fuentes 'Montserrat', 'Montserrat Alternates' y 'Poppins' en la página, mejorando la tipografía y el diseño. */
+
+* {
+  /* El selector universal (*) aplica estilos a todos los elementos HTML en la página. */
+  margin: 0;
+  /* Elimina el margen externo predeterminado de todos los elementos, reseteando el espaciado. */
+  padding: 0;
+  /* Elimina el relleno interno predeterminado de todos los elementos, reseteando el espaciado. */
+  box-sizing: border-box;
+  /* Establece el modelo de caja a 'border-box' para todos los elementos. Esto significa que el `padding` y `border` se incluyen dentro del `width` y `height` de un elemento, lo que facilita el diseño responsivo. */
+  font-family: "Montserrat Alternates", sans-serif;
+  /* Define la fuente predeterminada para todos los elementos. 'Montserrat Alternates' es la primera opción, y si no está disponible, se usa cualquier fuente sans-serif genérica. */
+}
+
+body {
+  /* Selecciona el elemento <body>, que representa el contenido visible de toda la página HTML. */
+  background-image: url("imagenes/fondo.jpg");
+  /* Establece una imagen de fondo para el cuerpo del documento. La imagen se encuentra en la ruta "imagenes/fondo.jpg". */
+  background-attachment: fixed;
+  /* Fija la imagen de fondo en su posición, de modo que no se desplaza con el contenido de la página. */
+  background-size: cover;
+  /* Ajusta el tamaño de la imagen de fondo para que cubra completamente el área del contenedor, recortando los bordes si es necesario para evitar espacios en blanco. */
+  background-position: center;
+  /* Centra la imagen de fondo horizontal y verticalmente dentro del contenedor. */
+  background-repeat: no-repeat;
+  /* Evita que la imagen de fondo se repita si no cubre todo el contenedor. */
+}
+
+.capa {
+  /* Selecciona el elemento con la clase 'capa'. Usualmente se usa para un overlay o una capa superpuesta. */
+  position: fixed;
+  /* Fija la posición del elemento con respecto a la ventana del navegador, lo que significa que se queda en el mismo lugar incluso al desplazarse. */
+  width: 100%;
+  /* Establece el ancho de la capa al 100% del ancho de su contenedor (la ventana del navegador en este caso). */
+  height: 100vh;
+  /* Establece la altura de la capa al 100% de la altura de la ventana (viewport height). */
+  background: rgba(0, 0, 0, 0.6);
+  /* Define un color de fondo semitransparente (negro con 60% de opacidad) para la capa, creando un efecto de oscurecimiento sobre el contenido de fondo. */
+  z-index: -1;
+  /* Coloca la capa detrás de otros elementos con un z-index mayor o predeterminado, para que no interfiera con la interactividad de otros elementos. */
+  top: 0;
+  /* Posiciona la capa en la parte superior del navegador. */
+  left: 0;
+  /* Posiciona la capa en el lado izquierdo del navegador. */
+}
+
+/*Estilos para el encabezado*/
+/* Comentario que indica el inicio de la sección de estilos para el encabezado. */
+.header {
+  /* Selecciona el elemento con la clase 'header', que típicamente contiene la barra de navegación superior. */
+  width: 100%;
+  /* Establece el ancho del encabezado al 100% del ancho de su contenedor. */
+  height: 100px;
+  /* Define la altura fija del encabezado en 100 píxeles. */
+  position: fixed;
+  /* Fija la posición del encabezado en la parte superior de la ventana del navegador, lo que significa que permanece visible al desplazarse. */
+  top: 0;
+  /* Posiciona el encabezado en la parte superior del navegador. */
+  left: 0;
+  /* Posiciona el encabezado en el lado izquierdo del navegador. */
+}
+
+.container {
+  /* Selecciona el elemento con la clase 'container', usado para centrar y limitar el ancho del contenido. */
+  width: 90%;
+  /* Establece el ancho del contenedor al 90% del ancho de su elemento padre. */
+  max-width: 1200px;
+  /* Limita el ancho máximo del contenedor a 1200 píxeles, evitando que se extienda demasiado en pantallas grandes. */
+  margin: auto;
+  /* Centra el contenedor horizontalmente en la página al establecer márgenes automáticos a izquierda y derecha. */
+}
+
+.container .btn-menu,
+.logo {
+  /* Selecciona el elemento con la clase 'btn-menu' y el elemento con la clase 'logo' dentro de un 'container'. */
+  float: left;
+  /* Hace que estos elementos floten a la izquierda, permitiendo que otros elementos fluyan a su lado. */
+  line-height: 100px;
+  /* Establece la altura de línea de estos elementos a 100 píxeles, lo que ayuda a centrar verticalmente su contenido dentro del encabezado de 100px de alto. */
+}
+
+.container .btn-menu label {
+  /* Selecciona el elemento <label> dentro de un 'btn-menu' que está dentro de un 'container'. */
+  color: #fff;
+  /* Establece el color del texto de la etiqueta (probablemente el icono de menú) a blanco. */
+  font-size: 25px;
+  /* Define el tamaño de la fuente de la etiqueta en 25 píxeles. */
+  cursor: pointer;
+  /* Cambia el cursor del ratón a una mano (puntero) cuando se pasa sobre la etiqueta, indicando que es clicable. */
+}
+
+.logo h1 {
+  /* Selecciona el encabezado <h1> dentro de un elemento con la clase 'logo'. */
+  color: #fff;
+  /* Establece el color del texto del título del logo a blanco. */
+  font-weight: 400;
+  /* Define el grosor de la fuente del título del logo a 400 (normal). */
+  font-size: 22px;
+  /* Establece el tamaño de la fuente del título del logo en 22 píxeles. */
+  margin-left: 10px;
+  /* Agrega un margen de 10 píxeles a la izquierda del título del logo. */
+}
+
+.container .menu {
+  /* Selecciona el elemento con la clase 'menu' dentro de un 'container'. */
+  float: right;
+  /* Hace que el menú flote a la derecha, colocándolo en el lado opuesto del logo/botón de menú. */
+  line-height: 100px;
+  /* Establece la altura de línea a 100 píxeles, ayudando a centrar verticalmente los elementos del menú dentro del encabezado. */
+}
+
+.container .menu a {
+  /* Selecciona todos los enlaces <a> dentro de un elemento con la clase 'menu' y un 'container'. */
+  display: inline-block;
+  /* Hace que los enlaces se comporten como bloques pero se mantengan en línea, permitiendo aplicar `padding`, `margin`, `width`, `height`. */
+  padding: 15px;
+  /* Agrega un relleno de 15 píxeles alrededor del texto de cada enlace. */
+  line-height: normal;
+  /* Restablece la altura de línea a su valor predeterminado (normal), permitiendo que el relleno controle el espaciado vertical. */
+  text-decoration: none;
+  /* Elimina el subrayado predeterminado de los enlaces. */
+  color: #fff;
+  /* Establece el color del texto de los enlaces a blanco. */
+  transition: all 0.3s ease;
+  /* Aplica una transición suave a todas las propiedades CSS que cambien en 0.3 segundos con una función de temporización 'ease'. Esto se usa para efectos hover. */
+  border-bottom: 2px solid transparent;
+  /* Añade un borde inferior transparente de 2 píxeles. Esto prepara el espacio para el efecto hover sin causar un "salto" en el diseño. */
+  font-size: 15px;
+  /* Define el tamaño de la fuente de los enlaces en 15 píxeles. */
+  margin-right: 5px;
+  /* Agrega un margen de 5 píxeles a la derecha de cada enlace, separándolos entre sí. */
+}
+
+.container .menu a:hover {
+  /* Selecciona los enlaces del menú cuando el cursor del ratón está sobre ellos (estado 'hover'). */
+  border-bottom: 2px solid #c7c7c7;
+  /* Cambia el color del borde inferior a un gris claro (#c7c7c7) cuando se hace hover, creando un efecto visual. */
+  padding-bottom: 5px;
+  /* Reduce el relleno inferior a 5 píxeles, lo que puede dar un ligero efecto de "empuje" o ajuste visual. */
+}
+
+/*Fin de Estilos para el encabezado*/
+/* Comentario que indica el final de la sección de estilos del encabezado. */
+
+/*Menù lateral*/
+/* Comentario que indica el inicio de la sección de estilos para el menú lateral. */
+#btn-menu {
+  /* Selecciona el elemento con el ID 'btn-menu' (probablemente un checkbox oculto que controla el menú lateral). */
+  display: none;
+  /* Oculta completamente el elemento checkbox del flujo normal del documento. */
+}
+
+.container-menu {
+  /* Selecciona el contenedor del menú lateral. */
+  position: absolute;
+  /* Posiciona el contenedor de forma absoluta con respecto a su ancestro posicionado más cercano, o al documento si no hay ninguno. */
+  background: rgba(0, 0, 0, 0.5);
+  /* Establece un fondo semitransparente (negro con 50% de opacidad) para el contenedor del menú, creando un overlay. */
+  width: 100%;
+  /* Establece el ancho del contenedor del menú al 100%. */
+  height: 100vh;
+  /* Establece la altura del contenedor del menú al 100% de la altura de la ventana. */
+  top: 0;
+  /* Posiciona el contenedor en la parte superior. */
+  left: 0;
+  /* Posiciona el contenedor en el lado izquierdo. */
+  transition: all 500ms ease;
+  /* Aplica una transición suave de 500 milisegundos a todas las propiedades que cambien, con una función de temporización 'ease'. */
+  opacity: 0;
+  /* Inicialmente, establece la opacidad del contenedor en 0, haciéndolo invisible. */
+  visibility: hidden;
+  /* Inicialmente, oculta el contenedor, haciéndolo no interactuable. */
+}
+
+#btn-menu:checked ~ .container-menu {
+  /* Este es un truco CSS. Selecciona el elemento '.container-menu' que es un hermano siguiente del checkbox con ID 'btn-menu' CUANDO este checkbox está marcado (:checked). */
+  opacity: 1;
+  /* Hace que el contenedor del menú sea completamente visible (opacidad 1) cuando el checkbox está marcado. */
+  visibility: visible;
+  /* Hace que el contenedor del menú sea interactuable (visible) cuando el checkbox está marcado. */
+}
+
+.cont-menu {
+  /* Selecciona el contenido real del menú lateral. */
+  width: 100%;
+  /* Establece el ancho del contenido del menú al 100% de su contenedor padre (que es `.container-menu`). */
+  max-width: 250px;
+  /* Limita el ancho máximo del contenido del menú a 250 píxeles. */
+  background: #1c1c1c;
+  /* Define el color de fondo del menú lateral como un gris muy oscuro. */
+  height: 100vh;
+  /* Establece la altura del menú lateral al 100% de la altura de la ventana. */
+  position: relative;
+  /* Establece el posicionamiento relativo para que los elementos hijos se puedan posicionar con respecto a él. */
+  transition: all 500ms ease;
+  /* Aplica una transición suave de 500 milisegundos a todas las propiedades que cambien. */
+  transform: translateX(-100%);
+  /* Inicialmente, mueve el menú completamente fuera de la vista hacia la izquierda (-100% de su propio ancho). */
+}
+
+#btn-menu:checked ~ .container-menu .cont-menu {
+  /* Selecciona el '.cont-menu' cuando el checkbox 'btn-menu' está marcado. */
+  transform: translateX(0%);
+  /* Mueve el menú de nuevo a su posición original (0% de desplazamiento) cuando el checkbox está marcado, haciéndolo visible con una animación de deslizamiento. */
+}
+
+.cont-menu nav {
+  /* Selecciona el elemento <nav> dentro del contenido del menú lateral. */
+  transform: translateY(15%);
+  /* Desplaza verticalmente el contenido de la navegación un 15% hacia abajo, para separarlo del borde superior. */
+}
+
+.cont-menu nav a {
+  /* Selecciona todos los enlaces <a> dentro de la navegación del menú lateral. */
+  display: block;
+  /* Hace que los enlaces se comporten como elementos de bloque, ocupando todo el ancho disponible y apilándose verticalmente. */
+  text-decoration: none;
+  /* Elimina el subrayado de los enlaces. */
+  padding: 20px;
+  /* Agrega un relleno de 20 píxeles alrededor de cada enlace. */
+  color: #c7c7c7;
+  /* Establece el color del texto del enlace a un gris claro. */
+  border-left: 5px solid transparent;
+  /* Añade un borde izquierdo transparente de 5 píxeles, preparando el espacio para el efecto hover. */
+  transition: all 400ms ease;
+  /* Aplica una transición suave de 400 milisegundos a todas las propiedades que cambien. */
+}
+
+.cont-menu nav a:hover {
+  /* Selecciona los enlaces del menú lateral cuando el cursor del ratón está sobre ellos. */
+  border-left: 5px solid #c7c7c7;
+  /* Cambia el color del borde izquierdo a un gris claro (#c7c7c7) cuando se hace hover, creando un efecto de resaltado. */
+  background: #1f1f1f;
+  /* Cambia el color de fondo del enlace a un gris ligeramente más claro que el fondo del menú cuando se hace hover. */
+}
+
+.cont-menu label {
+  /* Selecciona la etiqueta <label> dentro del contenido del menú lateral (probablemente el botón de cerrar 'X'). */
+  position: absolute;
+  /* Posiciona la etiqueta de forma absoluta con respecto a su contenedor (`.cont-menu`). */
+  right: 5px;
+  /* Posiciona la etiqueta a 5 píxeles del borde derecho de su contenedor. */
+  top: 10px;
+  /* Posiciona la etiqueta a 10 píxeles del borde superior de su contenedor. */
+  color: #fff;
+  /* Establece el color del texto (o icono) de la etiqueta a blanco. */
+  cursor: pointer;
+  /* Cambia el cursor del ratón a una mano (puntero) cuando se pasa sobre la etiqueta. */
+  font-size: 18px;
+  /* Define el tamaño de la fuente de la etiqueta en 18 píxeles. */
+}
+
+/*Fin de Menù lateral*/
+/* Comentario que indica el final de la sección de estilos del menú lateral. */
+
+.btn-ayuda {
+  /* Selecciona el elemento con la clase 'btn-ayuda', que es un botón flotante de ayuda. */
+  position: fixed;
+  /* Fija la posición del botón con respecto a la ventana del navegador. */
+  bottom: 30px;
+  /* Posiciona el botón a 30 píxeles del borde inferior de la ventana. */
+  right: 30px;
+  /* Posiciona el botón a 30 píxeles del borde derecho de la ventana. */
+  background: #e74c3c;
+  /* Establece el color de fondo del botón a un rojo brillante. */
+  color: white;
+  /* Define el color del texto del botón a blanco. */
+  padding: 15px 20px;
+  /* Agrega un relleno de 15 píxeles arriba/abajo y 20 píxeles izquierda/derecha. */
+  border-radius: 50px;
+  /* Hace que el botón sea completamente redondo (o tenga bordes muy redondeados). */
+  text-decoration: none;
+  /* Elimina el subrayado si es un enlace. */
+  font-weight: bold;
+  /* Establece el grosor de la fuente a negrita. */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  /* Añade una sombra al botón para darle un efecto de profundidad. La sombra es negra con 30% de opacidad, desplazada 4px verticalmente y con un desenfoque de 6px. */
+  transition: 0.3s;
+  /* Aplica una transición suave de 0.3 segundos a todas las propiedades que cambien. */
+}
+
+.btn-ayuda:hover {
+  /* Selecciona el botón de ayuda cuando el cursor del ratón está sobre él. */
+  background: #c0392b;
+  /* Cambia el color de fondo a un rojo más oscuro al pasar el ratón, indicando interactividad. */
+}
+
+.reveal {
+  /* Clase utilizada para elementos que se "revelan" o aparecen con animación. */
+  opacity: 0;
+  /* Inicialmente, hace que el elemento sea completamente invisible. */
+  transform: translateY(50px);
+  /* Desplaza el elemento 50 píxeles hacia abajo, fuera de su posición final. */
+  transition: 1s;
+  /* Aplica una transición de 1 segundo a todas las propiedades que cambien. */
+}
+
+.reveal.active {
+  /* Selecciona el elemento con la clase 'reveal' CUANDO también tiene la clase 'active'. */
+  opacity: 1;
+  /* Hace que el elemento sea completamente visible. */
+  transform: translateY(0);
+  /* Mueve el elemento a su posición original (0px de desplazamiento vertical). Combinado con la opacidad, crea un efecto de "aparecer deslizándose hacia arriba". */
+}
+
+/* NUEVAS CLASES PARA MEJORAR VISUAL */
+/* Comentario que indica el inicio de nuevas clases para mejorar el aspecto visual. */
+.titulo-seccion {
+  /* Selecciona el elemento con la clase 'titulo-seccion', presumiblemente un encabezado de sección. */
+  color: #ffffff;
+  /* Establece el color del texto a blanco. */
+  font-size: 28px;
+  /* Define el tamaño de la fuente en 28 píxeles. */
+  text-align: center;
+  /* Centra el texto horizontalmente. */
+  margin-bottom: 20px;
+  /* Agrega un margen de 20 píxeles debajo del título. */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  /* Añade una sombra al texto para hacerlo más legible sobre un fondo complejo. La sombra es negra con 60% de opacidad, desplazada 2px horizontalmente y 2px verticalmente, con un desenfoque de 4px. */
+}
+
+.texto-seccion {
+  /* Selecciona el elemento con la clase 'texto-seccion', presumiblemente para bloques de texto principales. */
+  color: #f0f0f0;
+  /* Establece el color del texto a un blanco muy ligeramente grisáceo. */
+  max-width: 800px;
+  /* Limita el ancho máximo del bloque de texto a 800 píxeles para mejorar la legibilidad. */
+  margin: 0 auto;
+  /* Centra el bloque de texto horizontalmente en la página. */
+  font-size: 18px;
+  /* Define el tamaño de la fuente en 18 píxeles. */
+  text-align: center;
+  /* Centra el texto dentro del bloque. */
+  line-height: 1.6;
+  /* Establece la altura de línea a 1.6 veces el tamaño de la fuente, mejorando la legibilidad. */
+  background: rgba(0, 0, 0, 0.4);
+  /* Define un color de fondo semitransparente (negro con 40% de opacidad) para el bloque de texto. */
+  padding: 20px;
+  /* Agrega un relleno de 20 píxeles alrededor del texto dentro del bloque. */
+  border-radius: 12px;
+  /* Redondea las esquinas del fondo del bloque de texto con un radio de 12 píxeles. */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  /* Añade una ligera sombra al bloque, con un desenfoque de 10px y un color blanco semitransparente, para un efecto sutil. */
+}
+
+.map-container {
+  /* Selecciona el elemento con la clase 'map-container', que envuelve el mapa. */
+  max-width: 800px;
+  /* Limita el ancho máximo del contenedor del mapa a 800 píxeles. */
+  margin: auto;
+  /* Centra el contenedor del mapa horizontalmente. */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  /* Añade una sombra más pronunciada al contenedor del mapa, haciéndolo destacar. La sombra es negra con 40% de opacidad, desplazada 4px verticalmente y con un desenfoque de 20px. */
+  border-radius: 12px;
+  /* Redondea las esquinas del contenedor del mapa con un radio de 12 píxeles. */
+  overflow: hidden;
+  /* Oculta cualquier contenido que desborde los límites del contenedor, útil si el mapa tiene sus propios bordes. */
+}
+
+/* Tabla más estilizada */
+/* Comentario que indica el inicio de estilos para tablas mejoradas. */
+.tabla-scroll {
+  /* Selecciona el elemento con la clase 'tabla-scroll', presumiblemente un contenedor para hacer que la tabla sea desplazable. */
+  overflow-x: auto;
+  /* Permite que el contenido horizontal se desplace si excede el ancho del contenedor. */
+  max-width: 100%;
+  /* Asegura que el contenedor de desplazamiento no sea más ancho que su padre. */
+}
+
+.tabla-estilizada {
+  /* Selecciona el elemento con la clase 'tabla-estilizada'. */
+  border-collapse: collapse;
+  /* Colapsa los bordes de la celda en un solo borde, lo que da una apariencia más limpia a la tabla. */
+  width: 100%;
+  /* Establece el ancho de la tabla al 100% de su contenedor. */
+  margin: auto;
+  /* Centra la tabla horizontalmente. */
+  background: rgba(255, 255, 255, 0.05);
+  /* Define un fondo muy ligeramente transparente y blanco para la tabla, dándole un aspecto sutil. */
+  color: #fff;
+  /* Establece el color del texto de la tabla a blanco. */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  /* Añade una sombra sutil a la tabla. La sombra es negra con 50% de opacidad y un desenfoque de 15px. */
+}
+
+.tabla-estilizada th,
+.tabla-estilizada td {
+  /* Selecciona tanto los encabezados de tabla (<th>) como las celdas de datos (<td>) dentro de una tabla estilizada. */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Aplica un borde sólido de 1 píxel a las celdas, con un color blanco semitransparente. */
+  padding: 12px;
+  /* Agrega un relleno de 12 píxeles dentro de cada celda, creando espacio entre el contenido y los bordes. */
+  text-align: center;
+  /* Centra el texto horizontalmente dentro de cada celda. */
+}
+
+.tabla-estilizada th {
+  /* Selecciona solo los encabezados de tabla (<th>) dentro de una tabla estilizada. */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Define un color de fondo ligeramente más oscuro y transparente para los encabezados de tabla. */
+  font-weight: bold;
+  /* Establece el grosor de la fuente de los encabezados a negrita. */
+}
+
+/* Animación Reveal */
+/* Comentario que indica el inicio de la sección de estilos para la animación "reveal". */
+.reveal {
+  /* Clase utilizada para elementos que se "revelan" o aparecen con animación (ya definida anteriormente, pero repetida aquí, posiblemente por estructuración o para sobreescritura). */
+  opacity: 0;
+  /* Inicialmente, hace que el elemento sea completamente invisible. */
+  transform: translateY(50px);
+  /* Desplaza el elemento 50 píxeles hacia abajo, fuera de su posición final. */
+  transition: all 1s ease;
+  /* Aplica una transición suave de 1 segundo a todas las propiedades que cambien, con una función de temporización 'ease'. */
+}
+
+.reveal.active {
+  /* Selecciona el elemento con la clase 'reveal' CUANDO también tiene la clase 'active'. */
+  opacity: 1;
+  /* Hace que el elemento sea completamente visible. */
+  transform: translateY(0);
+  /* Mueve el elemento a su posición original (0px de desplazamiento vertical). Combinado con la opacidad, crea un efecto de "aparecer deslizándose hacia arriba". */
+}
